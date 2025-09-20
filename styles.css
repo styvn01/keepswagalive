@@ -1,0 +1,317 @@
+
+:root{--bg:#080808;--panel:#111;--muted:#9aa0a6;--gold:#e6b75c;--accent:#e03a3a}
+*{box-sizing:border-box}body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:#fff;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:rgba(0,0,0,0.6);z-index:60}
+.brand{height:64px}
+.nav-center{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+.nav-center a{color:#ddd;text-decoration:none;font-weight:600}
+.btn{padding:8px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--gold);color:#000}
+.btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+.btn.small{padding:6px 10px}
+.btn.glow{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(224,58,58,0.12)}
+
+/* hero */
+.hero{height:88vh;position:relative;display:flex;align-items:center;justify-content:center;padding-top:68px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45);transform:scale(1.02)}
+.overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.6))}
+.watermark{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);opacity:0.06;width:420px;pointer-events:none}
+.hero-inner{position:relative;z-index:2;display:flex;gap:28px;align-items:flex-start;max-width:1200px;padding:24px;width:100%}
+.hero-text{flex:1}
+.hero-text h1{font-size:clamp(36px,6vw,72px);margin:0;letter-spacing:1px}
+.hero-ctas{margin-top:18px;display:flex;gap:12px;align-items:center}
+
+/* album layout: CSS-controlled sizes (album visually 90% of original via max-width) */
+.hero-media{display:flex;gap:20px;align-items:flex-start}
+.album-card{flex:0 0 340px;max-width:340px}
+.album-img{width:100%;height:auto;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.6);object-fit:cover;max-height:420px}
+.album-media{flex:1 1 420px;display:flex;flex-direction:column;gap:12px}
+
+/* sections */
+.section{padding:88px 24px}
+.section h2{margin-top:0}
+
+/* Grid Layout */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Clickable Card */
+.merch-card {
+  background: var(--panel);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.merch-card:hover {
+  transform: scale(1.03);
+}
+
+/* Image container with hover switch */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+  border-bottom: 1px solid #eee;
+}
+
+.img-front {
+  opacity: 1;
+  z-index: 1;
+}
+
+.img-back {
+  opacity: 0;
+  z-index: 2;
+}
+
+.image-container:hover .img-front {
+  opacity: 0;
+}
+
+.image-container:hover .img-back {
+  opacity: 1;
+}
+
+/* Info section */
+.merch-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.merch-info h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.price{color:var(--gold);font-weight:700}
+
+
+/* Biography Section */
+.bio-section {
+  background-image: url("assets/leafbio.jpg"); /* Replace with your artist image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 350px;
+  margin: 60px 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional dark overlay to make text readable */
+.bio-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* darker overlay */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Text content */
+.bio-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.bio-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.bio-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* Fanclub section with background image */
+#fanclub.section.dark {
+  background-image: url("assets/fanclub.jpg"); /* <-- Replace with your actual image */
+  background-size: cover;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+}
+
+/* Optional: Dark overlay to improve text readability */
+#fanclub.section.dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 1;
+}
+
+/* Ensure text is above the overlay */
+#fanclub.section.dark h2,
+#fanclub.section.dark .fanclub-cta {
+  position: relative;
+  z-index: 2;
+}
+
+/* Booking Section */
+#booking.section {
+  background-color: #111;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+#booking h2 {
+  font-size: 2.5rem;
+  color: var(--gold, #f0c040);
+  margin-bottom: 40px;
+}
+
+/* Form Styles */
+#bookingForm {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input and Textarea */
+#bookingForm input,
+#bookingForm textarea {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 1.1rem;
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+#bookingForm input:focus,
+#bookingForm textarea:focus {
+  border-color: var(--gold, #f0c040);
+  box-shadow: 0 0 0 3px rgba(240, 192, 64, 0.3);
+  outline: none;
+}
+
+/* Textarea resizing */
+#bookingForm textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Submit Button */
+#bookingForm button.btn.primary {
+  background: var(--gold, #f0c040);
+  color: #111;
+  border: none;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#bookingForm button.btn.primary:hover {
+  background-color: #d6a520;
+}
+
+
+/* Connect Section */
+#contact.section.dark {
+  background-image: url("assets/contact.jpg"); /* <-- Replace with your actual image */
+  background-size: cover;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+}
+
+#contact h2 {
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: var(--gold, #f0c040);
+  letter-spacing: 1px;
+}
+
+/* Social Icons Container */
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Social Icon Links */
+.socials a {
+  font-size: 2.4rem;
+  color: #ffffffcc;
+  transition: transform 0.3s ease, color 0.3s ease;
+  background: #222;
+  padding: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Hover effects */
+.socials a:hover {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+/* Platform-specific colors (optional) */
+.s-ig:hover { background: #e1306c; }
+.s-tt:hover { background: #010101; }
+.s-yt:hover { background: #ff0000; }
+.s-fb:hover { background: #1877f2; }
+
+
+/* modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;z-index:2000}
+.modal .modal-content{background:#111;padding:20px;border-radius:12px;max-width:420px;width:94%}
+
+/* responsive */
+@media(max-width:1000px){.hero-inner{flex-direction:column-reverse;text-align:center}.nav-center{display:none}.album-card{max-width:260px}}

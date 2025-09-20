@@ -1,0 +1,3 @@
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_YOUR_KEY');
+export async function handler(event){ try{ const {itemId} = JSON.parse(event.body||'{}'); const session = await stripe.checkout.sessions.create({payment_method_types:['card'],mode:'payment',line_items:[{price_data:{currency:'usd',product_data:{name:itemId||'Item'},unit_amount:2500},quantity:1}],success_url:(process.env.SITE_URL||'https://example.com')+'/success',cancel_url:(process.env.SITE_URL||'https://example.com')+'/cancel'}); return {statusCode:200, body: JSON.stringify({url: session.url})}; }catch(e){ return {statusCode:500, body: JSON.stringify({error: e.message})}; } }

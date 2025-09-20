@@ -1,0 +1,1 @@
+document.addEventListener('click', function(e){ if(e.target.classList && e.target.classList.contains('close')) document.getElementById('authModal').style.display='none'; });

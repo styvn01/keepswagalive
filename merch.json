@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sweatshirt",
+    "name": "Sweatshirt",
+    "price": 40.0,
+    "image": "assets/merch/sweatshirt-front.jpg"
+  },
+  {
+    "id": "tanktop",
+    "name": "Tanktop",
+    "price": 25.0,
+    "image": "assets/merch/tanktopyellow-front.jpg"
+  },
+  {
+    "id": "cap",
+    "name": "Cap",
+    "price": 25.0,
+    "imgFront": "assets/merch/caps.jpg",
+    "imgBack": "assets/merch/cap.jpg"
+  },
+  {
+    "id": "sweatshirts",
+    "name": "Sweatshirts",
+    "price": 40.0,
+    "imgFront": "assets/merch/sweatshirt-frontyellow.jpg",
+    "imgBack": "assets/merch/sweatshirt-backyellow.jpg"
+  },
+  {
+    "id": "tanktops",
+    "name": "Tanktops",
+    "price": 25.0,
+    "imgFront": "assets/merch/tanktopred-front.jpg",
+    "imgBack": "assets/merch/tanktopred-back.jpg"
+  },
+  {
+    "id": "placeholder",
+    "name": "Placeholder",
+    "price": 22.0,
+    "imgFront": "assets/merch/merch6-front.jpg",
+    "imgBack": "assets/merch/merch6-back.jpg"
+  }
+]
