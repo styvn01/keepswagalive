@@ -1,0 +1,24 @@
+{
+  "name": "keepswagalive_rebuilt_final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/styvn01/keepswagalive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/styvn01/keepswagalive/issues"
+  },
+  "homepage": "https://github.com/styvn01/keepswagalive#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "stripe": "^18.5.0"
+  }
+}
