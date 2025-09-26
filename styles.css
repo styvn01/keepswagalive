@@ -315,3 +315,47 @@
 
 /* responsive */
 @media(max-width:1000px){.hero-inner{flex-direction:column-reverse;text-align:center}.nav-center{display:none}.album-card{max-width:260px}}
+
+/* === Extra Responsive Adjustments === */
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Merch grid adapts */
+.merch-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Embedded media responsive */
+.embed-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+}
+.embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Navbar toggle on small screens */
+@media (max-width: 768px) {
+  .nav-center {
+    flex-direction: column;
+    display: none;
+  }
+  .nav.active .nav-center {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+}
+
