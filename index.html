@@ -1,171 +1,1240 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LeafB — Keepswagalive</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LeafB | KeepSwagAlive</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="styles.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
+
 <body>
+
+<!-- =========================
+     WELCOME EMAIL POPUP
+========================= -->
+
+<div id="welcomePopup" class="welcome-popup">
+
+    <div class="welcome-box">
+
+        <button id="closeWelcome" class="welcome-close">
+            &times;
+        </button>
+
+        <h2>Welcome to KeepSwagAlive</h2>
+
+        <p>
+            Join our JIGGY SHI* ONLY community and receive
+            <strong>10% OFF</strong>
+            your first order.
+        </p>
+
+        <form id="emailOfferForm">
+
+            <input 
+            type="email"
+            id="customerEmail"
+            name="email"
+            placeholder="Enter your email"
+            required>
+
+            <button type="submit" class="btn primary">
+                Get 10% Discount
+            </button>
+
+
+        </form>
+
+
+        <div id="discountCode" class="discount-code">
+        </div>
+
+
+    </div>
+
+</div>
+<!-- ================= NAVIGATION ================= -->
+
 <nav class="nav" id="topNav">
-  <div class="nav-left"><img src="assets/ksa-logo.png" class="brand" alt="KSA logo"></div>
-  <ul class="nav-center">
-    <li><a href="#music">Music</a></li>
-    <li><a href="#merch">Merch</a></li>
-    <li><a href="#booking">Booking</a></li>
-    <li><a href="#contact">Connect</a></li>
-  </ul>
-  <div class="nav-right"><button id="loginBtn" class="btn">Login / Sign Up</button></div>
+
+<div class="nav-container">
+
+<a href="#" class="logo">
+
+<img src="assets/ksa-logo.png" alt="KeepSwagAlive" class="brand">
+
+</a>
+
+<button class="menu-toggle" id="menuToggle">
+
+<i class="fas fa-bars"></i>
+
+</button>
+
+<div class="nav-menu" id="navMenu">
+
+<ul class="nav-links">
+
+<li><a href="#music">Music</a></li>
+
+<li><a href="#merch">Merch</a></li>
+
+<li><a href="#fanclub">Fan Club</a></li>
+
+<li><a href="#booking">Booking</a></li>
+
+<li><a href="#contact">Connect</a></li>
+
+</ul>
+
+<button id="loginBtn" class="btn primary">
+
+JIGGY SHI* ONLY CLUB
+
+</button>
+
+</div>
+
+</div>
+
 </nav>
 
+<!-- ============== HERO SECTION =============== -->
 <header class="hero">
-  <img class="hero-bg" src="assets/hero.jpg" alt="Hero image">
-  <div class="overlay"></div>
-  <img class="watermark" src="assets/ksa-logo.png" alt="watermark">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <h1 id="artistName">LeafB</h1>
-      <p class="tagline"></p>
-      <div class="hero-ctas">
-        <a class="btn primary" href="https://open.spotify.com/track/0V4dacArqupu6dU6KqccZ2?si=033cc90fa7a240a5" target="_blank">Listen Now</a>
-        <a class="btn outline" href="#merch">Shop Merch</a>
-      </div>
+
+    <img
+        src="assets/hero.png"
+        class="hero-bg"
+        alt="LeafB">
+
+    <div class="hero-overlay"></div>
+
+    <img
+        src="assets/hero.png"
+        class="hero-watermark"
+        alt="KSA">
+
+    <div class="hero-container">
+
+        <p class="hero-tag">
+            KEEP SWAG ALIVE
+        </p>
+
+        <h1 class="hero-title">
+            LeafB
+        </h1>
+
+      
+
+        <div class="hero-buttons">
+
+            <a
+                href="https://ffm.to/whoisleafb"
+                target="_blank"
+                class="btn primary">
+
+                Listen Now
+
+            </a>
+
+            <a
+                href="#merch"
+                class="btn outline">
+
+                Shop Merch
+
+            </a>
+
+        </div>
+
+        </div>
+
     </div>
-    <div class="hero-media">
-      <div class="album-card">
-        <img src="assets/album.jpg" class="album-img" alt="Album Cover">
-      </div>
-      <div class="album-media">
-        <iframe class="spotify-embed" src="https://open.spotify.com/embed/track/0V4dacArqupu6dU6KqccZ2" width="100%" height="80" frameborder="0" allow="encrypted-media"></iframe>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/7gWLiLxNx4g" width="100%" height="250" frameborder="0" allowfullscreen></iframe></div>
-      </div>
-    </div>
-  </div>
+
 </header>
 
+
+<!-- ============== MEDIA SECTION ============== -->
+
+<section class="media-section">
+
+<div class="media-container">
+
+    <div class="album-card">
+
+        <img
+            src="assets/hero.png"
+            class="album-img"
+            alt="LeafB Album">
+
+    </div>
+
+    <div class="media-column">
+
+        <div class="spotify-card">
+
+            <iframe
+                class="spotify-embed"
+                src="https://open.spotify.com/album/0OveK1l8mmGh6mumP2l2Ml?si=f8GX_SqFS-CC1LMSwvJbxA"
+                loading="lazy"
+                allow="encrypted-media">
+            </iframe>
+
+        </div>
+
+        <div class="video-wrapper">
+
+            <iframe
+                src="https://youtube.com/playlist?list=OLAK5uy_lpKfx0yP41P3Nu347PPmRzO4mR8q1xmCc&si=meUOzs4SzfL7hdHD"
+                title="LeafB Official Video"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
 <main>
-<section id="music" class="section">
-  <h2>Recent Tracks</h2>
-  <div class="player-row">
-    <iframe src="https://open.spotify.com/embed/track/0V4dacArqupu6dU6KqccZ2" width="300" height="80" frameborder="0" allow="encrypted-media"></iframe>
-    <div><a class="btn small" href="https://open.spotify.com/track/0V4dacArqupu6dU6KqccZ2" target="_blank">Listen on Spotify</a></div>
-  </div>
-</section>
 
-<section id="merch" class="section dark">
-  <h2>Merch</h2>
-  <div class="merch-grid">
-  <a href="#" class="merch-card">
-    <div class="image-container">
-      <img src="assets/merch/cap.jpg" class="img-front" alt="Cap Front">
-      <img src="assets/merch/caps.jpg" class="img-back" alt="Cap Back">
-    </div>
-    <div class="merch-info">
-      <h4>Cap</h4>
-      <p class="price">$25</p>
-    </div>
-  </a>
+<!-- ================= MUSIC SECTION ================= -->
 
-<a href="#" class="merch-card">
-    <div class="image-container">
-      <img src="assets/merch/sweatshirt-frontyellow.jpg" class="img-front" alt="sweatshirt Front">
-      <img src="assets/merch/sweatshirt-backyellow.jpg" class="img-back" alt="sweatshirt Back">
-    </div>
-    <div class="merch-info">
-      <h4>Sweatshirt</h4>
-      <p class="price">$40</p>
-    </div>
-  </a>
+<section id="music" class="section music-section">
 
-<a href="#" class="merch-card">
-    <div class="image-container">
-      <img src="assets/merch/tanktopred-front.jpg" class="img-front" alt="tanktop Front">
-      <img src="assets/merch/tanktopred-back.jpg" class="img-back" alt="tanktop Back">
-    </div>
-    <div class="merch-info">
-      <h4>Tanktop</h4>
-      <p class="price">$25</p>
-    </div>
-  </a>
+<div class="section-header">
 
-<a href="#" class="merch-card">
-    <div class="image-container">
-      <img src="assets/merch/tanktopyellow-front.jpg" class="img-front" alt="tanktop Front">
-      <img src="assets/merch/tanktopyellow-back.jpg" class="img-back" alt="tanktop Back">
-    </div>
-    <div class="merch-info">
-      <h4>Tanktop</h4>
-      <p class="price">$25</p>
-    </div>
-  </a>
+<span>Latest Releases</span>
 
-<a href="#" class="merch-card">
-    <div class="image-container">
-      <img src="assets/merch/sweatshirt-front.jpg" class="img-front" alt="sweatshirt Front">
-      <img src="assets/merch/sweatshirtred-back.jpg" class="img-back" alt="sweatshirt Back">
-    </div>
-    <div class="merch-info">
-      <h4>Sweatshirt</h4>
-      <p class="price">$40</p>
-    </div>
-  </a>
+<h2>Music</h2>
 
-  <!-- Repeat for other products -->
+</div>
+
+
+<div class="music-container">
+
+
+<div class="release-card">
+
+<img 
+src="assets/album.jpg"
+alt="LeafB Album Cover"
+loading="lazy">
+
+
+<div class="release-info">
+
+<h3>
+Latest Track
+</h3>
+
+<p>
+Stream LeafB's newest release on your favorite platform.
+</p>
+
+
+<div class="platform-buttons">
+
+<a 
+href="https://open.spotify.com/album/0OveK1l8mmGh6mumP2l2Ml?si=f8GX_SqFS-CC1LMSwvJbxA"
+target="_blank"
+rel="noopener noreferrer"
+class="btn primary">
+
+<i class="fab fa-spotify"></i>
+
+Spotify
+
+</a>
+
+
 </div>
 
 </div>
 
 </div>
 
-  <section class="bio-section">
-  <div class="bio-overlay">
-    <div class="bio-content">
-      <h2>About the Artist</h2>
-      <p>
-        Leaf B (Kalif Bakare) is a dynamic artist and creative visionary making waves in music, fashion, and visual arts. Born and raised in Alief, Texas, Kalif entered the music industry as one-half of the innovative duo Galaktiq. Together, they explored the genre Fuji Pop—a fusion of EDM, R&B, Afrobeat, and Arabic influences—and performed alongside top artists like Olamide, LAX, Idowest, and DJ Consequence. This marks the beginning of his solo musical journey, providing him with a platform to experiment and define his unique sound.
-      </p>
+
+
+<div class="music-player">
+
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4S8Ba1CSW6xvXQVAtTpdsT?utm_source=generator&si=2f1078cf53c24cc7" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ================= MERCH SECTION ================= -->
+
+<section id="merch" class="section merch-section dark">
+
+    <div class="section-header">
+        <span>Official Store</span>
+        <h2>Merch</h2>
     </div>
-  </div>
-</section>
+
+    <div class="merch-grid">
+
+        <!-- CAP -->
+        <div class="merch-card">
+
+            <div class="product-image">
+
+                <img
+                    src="assets/merch/cap.jpg"
+                    alt="KSA Cap Front"
+                    class="img-front"
+                    loading="lazy">
+
+                <img
+                    src="assets/merch/caps.jpg"
+                    alt="KSA Cap Back"
+                    class="img-back"
+                    loading="lazy">
+
+            </div>
+
+            <div class="merch-info">
+
+                <h3>Cap</h3>
+
+                <p class="price">$25</p>
+
+                <button
+                    type="button"
+                    class="buy-btn"
+                    data-product="Cap"
+                    data-price="25">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- YELLOW SWEATSHIRT -->
+        <div class="merch-card">
+
+            <div class="product-image">
+
+                <img
+                    src="assets/merch/sweatshirt-frontyellow.jpg"
+                    alt="Yellow Sweatshirt Front"
+                    class="img-front"
+                    loading="lazy">
+
+                <img
+                    src="assets/merch/sweatshirt-backyellow.jpg"
+                    alt="Yellow Sweatshirt Back"
+                    class="img-back"
+                    loading="lazy">
+
+            </div>
+
+            <div class="merch-info">
+
+                <h3>Sweatshirt</h3>
+
+                <p class="price">$60</p>
+
+                <button
+                    type="button"
+                    class="buy-btn"
+                    data-product="Sweatshirt"
+                    data-price="60">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- RED TANK TOP -->
+        <div class="merch-card">
+
+            <div class="product-image">
+
+                <img
+                    src="assets/merch/tanktopred-front.jpg"
+                    alt="Red Tank Top Front"
+                    class="img-front"
+                    loading="lazy">
+
+                <img
+                    src="assets/merch/tanktopred-back.jpg"
+                    alt="Red Tank Top Back"
+                    class="img-back"
+                    loading="lazy">
+
+            </div>
+
+            <div class="merch-info">
+
+                <h3>Tank Top</h3>
+
+                <p class="price">$40</p>
+
+                <button
+                    type="button"
+                    class="buy-btn"
+                    data-product="Tank Top"
+                    data-price="40">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- YELLOW TANK TOP -->
+        <div class="merch-card">
+
+            <div class="product-image">
+
+                <img
+                    src="assets/merch/tanktopyellow-front.jpg"
+                    alt="Yellow Tank Top Front"
+                    class="img-front"
+                    loading="lazy">
+
+                <img
+                    src="assets/merch/tanktopyellow-back.jpg"
+                    alt="Yellow Tank Top Back"
+                    class="img-back"
+                    loading="lazy">
+
+            </div>
+
+            <div class="merch-info">
+
+                <h3>Tank Top</h3>
+
+                <p class="price">$40</p>
+
+                <button
+                    type="button"
+                    class="buy-btn"
+                    data-product="Tank Top"
+                    data-price="40">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLACK SWEATSHIRT -->
+        <div class="merch-card">
+
+            <div class="product-image">
+
+                <img
+                    src="assets/merch/sweatshirt-front.jpg"
+                    alt="Sweatshirt Front"
+                    class="img-front"
+                    loading="lazy">
+
+                <img
+                    src="assets/merch/sweatshirtred-back.jpg"
+                    alt="Sweatshirt Back"
+                    class="img-back"
+                    loading="lazy">
+
+            </div>
+
+            <div class="merch-info">
+
+                <h3>Sweatshirt</h3>
+
+                <p class="price">$60</p>
+
+                <button
+                    type="button"
+                    class="buy-btn"
+                    data-product="Sweatshirt"
+                    data-price="60">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-<section id="fanclub" class="section dark">
-  <h2>Fanclub</h2>
-<p>Get exclusive updates, early merch access, and behind-the-scenes content!</p>
-  <div class="fanclub-cta"><button id="fanclubBtn" class="btn glow">Join the Fan Club</button></div>
+<!-- ================= BIO SECTION ================= -->
+
+
+<section class="bio-section">
+
+
+<div class="bio-overlay">
+
+
+<div class="bio-content">
+
+
+<span>
+
+About The Artist
+
+</span>
+
+
+<h2>
+
+LeafB
+
+</h2>
+
+
+<p>
+
+LeafB is a dynamic artist and creative visionary making waves in music, fashion, and visual arts. Born and raised in Alief, Texas, LeafB entered the music industry as one-half of the innovative duo Galaktiq. Together, they explored Fuji Pop — a fusion of EDM, R&B, Afrobeat, and Arabic influences.
+
+This marks the beginning of his solo musical journey, creating a platform to experiment and define his unique sound.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
 </section>
 
-<section id="booking" class="section">
-  <h2>Booking</h2>
-  <form id="bookingForm" class="form" method="POST" data-netlify="true" netlify-honeypot="bot-field" name="booking">
+
+<!-- ================= FAN CLUB SECTION ================= -->
+
+<section id="fanclub" class="section fanclub-section">
+
+
+<div class="fanclub-overlay">
+
+
+<div class="fanclub-content">
+
+
+<span>
+
+Exclusive Access
+
+</span>
+
+
+<h2>
+
+Join The JIGGY SHI* ONLY CLUB
+
+</h2>
+
+
+<p>
+
+Get exclusive updates, early merch access, behind-the-scenes content,
+and announcements directly from LeafB.
+
+</p>
+
+
+<button id="fanclubBtn" class="btn glow">
+
+JIGGY SHI* ONLY CLUB
+
+</button>
+
+
+<!-- Fan Club Modal -->
+
+<div id="fanModal" class="fan-modal">
+
+
+<div class="fan-modal-content">
+
+
+<button class="close-modal" id="closeFanModal">
+
+&times;
+
+</button>
+
+
+<h3>
+
+KeepSwagAlive
+
+</h3>
+
+
+<p>
+
+Become part of the official community.
+Get updates, exclusive drops, and early access.
+
+</p>
+
+
+<form id="fanForm">
+
+    <input 
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required>
+
+
+    <input 
+    type="email"
+    name="email"
+    placeholder="Email Address"
+    required>
+
+
+    <button type="submit" class="btn primary">
+       Join The JIGGY SHI* ONLY CLUB
+    </button>
+
+</form>
+
+<p id="fanMessage"></p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- ================= BOOKING SECTION ================= -->
+
+
+<section id="booking" class="section booking-section">
+
+
+<div class="section-header">
+
+
+<span>
+
+Work With LeafB
+
+</span>
+
+
+<h2>
+
+Booking
+
+</h2>
+
+
+</div>
+
+
+
+<form 
+
+id="bookingForm"
+
+class="booking-form"
+
+method="POST"
+
+data-netlify="true"
+
+netlify-honeypot="bot-field"
+
+name="booking">
+
+
 <input type="hidden" name="form-name" value="booking">
 
-    <input name="name" placeholder="Your name" required>
-    <input name="email" type="email" placeholder="Email" required>
-    <input name="event" placeholder="Event / Date / Location">
-    <textarea name="message" placeholder="Booking details"></textarea>
-    <button class="btn primary" type="submit">Send Booking Request</button>
-  </form>
+
+<input
+
+type="hidden"
+
+name="bot-field">
+
+
+
+<div class="form-group">
+
+
+<input
+
+type="text"
+
+name="name"
+
+placeholder="Your Name"
+
+required>
+
+
+</div>
+
+
+
+<div class="form-group">
+
+
+<input
+
+type="email"
+
+name="email"
+
+placeholder="Email Address"
+
+required>
+
+
+</div>
+
+
+
+
+<div class="form-group">
+
+
+<input
+
+type="text"
+
+name="event"
+
+placeholder="Event Name">
+
+
+</div>
+
+
+
+
+<div class="form-group">
+
+
+<input
+
+type="text"
+
+name="location"
+
+placeholder="Event Location">
+
+
+</div>
+
+
+
+
+<div class="form-group">
+
+
+<textarea
+
+name="message"
+
+placeholder="Tell us about your booking request"
+
+rows="6"></textarea>
+
+
+</div>
+
+
+
+<button 
+
+type="submit"
+
+id="bookingSubmit"
+
+class="btn primary">
+
+<span class="button-text">
+
+Send Booking Request
+
+</span>
+
+<span class="button-loading">
+
+Sending...
+
+</span>
+
+</button>
+
+
+<div id="bookingMessage"></div>
+
+
+
+</form>
+
+
 </section>
 
-<section id="contact" class="section dark">
-  <h2>Connect</h2>
-  <div class="socials">
-    <a class="s-ig" href="https://www.instagram.com/keepswagalive?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a class="s-tt" href="https://tiktok.com/@keepswagalive" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-    <a class="s-yt" href="https://www.youtube.com/@LeafBKSA" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a class="s-fb" href="https://facebook.com/profile.php?id=100065085570340" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-  </div>
+
+
+
+
+<!-- ================= CONTACT SECTION ================= -->
+
+
+<section id="contact" class="section contact-section dark">
+
+
+<div class="contact-overlay">
+
+
+<div class="section-header">
+
+
+<span>
+
+Follow The Movement
+
+</span>
+
+
+<h2>
+
+Connect
+
+</h2>
+
+
+</div>
+
+
+
+
+<div class="socials">
+
+
+
+<a
+
+href="https://www.instagram.com/keepswagalive"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+aria-label="Instagram"
+
+class="social instagram">
+
+
+<i class="fab fa-instagram"></i>
+
+
+</a>
+
+
+
+
+
+<a
+
+href="https://tiktok.com/@keepswagalive"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+aria-label="TikTok"
+
+class="social tiktok">
+
+
+<i class="fab fa-tiktok"></i>
+
+
+</a>
+
+
+
+
+
+
+<a
+
+href="https://www.youtube.com/@LeafBKSA"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+aria-label="YouTube"
+
+class="social youtube">
+
+
+<i class="fab fa-youtube"></i>
+
+
+</a>
+
+
+
+
+
+
+<a
+
+href="https://facebook.com/profile.php?id=100065085570340"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+aria-label="Facebook"
+
+class="social facebook">
+
+
+<i class="fab fa-facebook"></i>
+
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
 </section>
+
+<!-- PAYMENT MODAL -->
+
+<div id="paymentModal" class="payment-modal">
+
+
+<div class="payment-box">
+
+
+<button id="closePayment" class="close-modal">
+
+&times;
+
+</button>
+
+
+<h2>
+Complete Purchase
+</h2>
+
+
+<h3 id="selectedProduct"></h3>
+
+
+
+<div class="payment-methods">
+
+
+<div class="payment-card">
+
+<h4>
+Cash App
+</h4>
+
+
+<img 
+src="assets/payments/Cashappqrcode.jpg"
+alt="Cash App QR Code">
+
+
+<p>
+$KalifBakare
+</p>
+
+
+<a 
+class="payment-action cashapp-btn"
+href="https://cash.app/$KalifBakare"
+target="_blank">
+
+Pay With Cash App
+
+</a>
+
+
+</div>
+
+
+
+<div class="payment-card">
+
+<h4>
+Zelle
+</h4>
+
+
+<img 
+src="assets/payments/Zelle.png"
+alt="Zelle QR Code">
+
+
+<p id="zelleDetails">
+    Zelle: Khalifbakare@cs.com
+</p>
+
+
+<button 
+class="payment-action zelle-btn"
+onclick="copyZelle()">
+
+Copy Zelle Details
+
+</button>
+
+
+</div>
+
+
+
+
+<div class="payment-card">
+
+<h4>
+PayPal
+</h4>
+
+
+<img 
+src="assets/payments/paypalqrcode.jpeg"
+alt="PayPal QR Code">
+
+
+<p>
+paypal.me/Khalifbakareholdings
+</p>
+
+
+<a 
+class="payment-action paypal-btn"
+href="https://paypal.me/Khalifbakareholdings"
+target="_blank">
+
+Pay With PayPal
+
+</a>
+
+
+</div>
+
+
+</div>
+
+<!-- PAYMENT PROOF FORM -->
+
+<form 
+id="paymentProofForm"
+class="payment-proof-form"
+method="POST"
+data-netlify="true"
+enctype="multipart/form-data"
+name="payment-proof">
+
+
+<input type="hidden" name="form-name" value="payment-proof">
+
+<input 
+type="hidden"
+name="order-number"
+id="orderNumber">
+
+<h3>
+Submit Payment Proof
+</h3>
+
+
+<input
+type="text"
+name="customer-name"
+placeholder="Your Name"
+required>
+
+
+
+<input
+type="email"
+name="customer-email"
+placeholder="Your Email"
+required>
+
+
+
+<input
+type="text"
+name="product"
+id="proofProduct"
+placeholder="Product"
+readonly>
+
+
+
+<input
+type="text"
+name="payment-method"
+placeholder="Payment Method"
+required>
+
+
+
+<label>
+Upload Receipt Screenshot
+</label>
+
+
+<input
+type="file"
+name="receipt"
+accept="image/*"
+required>
+
+
+
+<button
+type="submit"
+class="btn primary">
+
+Confirm Order
+
+</button>
+
+
+</form>
+
+<div 
+id="orderMessage"
+class="order-message">
+</div>
+
+
+<button class="btn primary confirm-payment">
+
+I Have Paid
+
+</button>
+
+
+
+</div>
+
+
+</div>
 
 </main>
 
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<footer class="footer">
+
+
+<div class="footer-content">
+
+
+<img
+
+src="assets/ksa-logo.png"
+
+alt="KeepSwagAlive Logo"
+
+class="footer-logo">
+
+
+<p>
+
+© 2026 KeepSwagAlive. All Rights Reserved.
+
+</p>
+
+
+</div>
+
+
+</footer>
+
+
+
+
+
+<!-- ================= SCRIPTS ================= -->
+
+
 <script src="app.js"></script>
+
 <script src="modal-helper.js"></script>
+
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+
+
 </body>
+
 </html>
