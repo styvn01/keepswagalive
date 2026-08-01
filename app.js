@@ -1,7 +1,8 @@
 /* =====================================================
    KeepSwagAlive
    Main JavaScript
-   Version 2.0
+   Version 3.0
+   Matching CSS Version 3+
 ===================================================== */
 
 
@@ -19,37 +20,32 @@ if(menuToggle && navMenu){
 
         navMenu.classList.toggle("active");
 
+
         const icon = menuToggle.querySelector("i");
 
 
         if(icon){
 
-            if(navMenu.classList.contains("active")){
-
-                icon.classList.remove("fa-bars");
-                icon.classList.add("fa-xmark");
-
-            }else{
-
-                icon.classList.remove("fa-xmark");
-                icon.classList.add("fa-bars");
-
-            }
+            icon.classList.toggle("fa-bars");
+            icon.classList.toggle("fa-xmark");
 
         }
 
+
     });
+
 
 }
 
 
-
-/* Close menu after selecting link */
+/* Close mobile menu when clicking links */
 
 document.querySelectorAll(".nav-links a")
 .forEach(link=>{
 
+
     link.addEventListener("click",()=>{
+
 
         if(navMenu){
 
@@ -58,25 +54,56 @@ document.querySelectorAll(".nav-links a")
         }
 
 
-        if(menuToggle){
-
-            const icon =
-            menuToggle.querySelector("i");
+        const icon =
+        menuToggle?.querySelector("i");
 
 
-            if(icon){
+        if(icon){
 
-                icon.classList.remove("fa-xmark");
-                icon.classList.add("fa-bars");
-
-            }
+            icon.classList.add("fa-bars");
+            icon.classList.remove("fa-xmark");
 
         }
 
+
     });
+
 
 });
 
+
+
+/* Close menu when clicking outside */
+
+
+document.addEventListener("click",(e)=>{
+
+
+    if(
+        navMenu &&
+        menuToggle &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+    ){
+
+        navMenu.classList.remove("active");
+
+
+        const icon =
+        menuToggle.querySelector("i");
+
+
+        if(icon){
+
+            icon.classList.add("fa-bars");
+            icon.classList.remove("fa-xmark");
+
+        }
+
+    }
+
+
+});
 
 
 
@@ -86,7 +113,8 @@ document.querySelectorAll(".nav-links a")
 ===================================================== */
 
 
-const nav = document.querySelector(".nav");
+const nav =
+document.querySelector(".nav");
 
 
 window.addEventListener("scroll",()=>{
@@ -95,15 +123,10 @@ window.addEventListener("scroll",()=>{
     if(!nav) return;
 
 
-    if(window.scrollY > 50){
-
-        nav.classList.add("scrolled");
-
-    }else{
-
-        nav.classList.remove("scrolled");
-
-    }
+    nav.classList.toggle(
+        "scrolled",
+        window.scrollY > 50
+    );
 
 
 });
@@ -117,104 +140,110 @@ window.addEventListener("scroll",()=>{
 ===================================================== */
 
 
-document.querySelectorAll('a[href^="#"]')
+document.querySelectorAll(
+'a[href^="#"]'
+)
 .forEach(anchor=>{
 
 
-    anchor.addEventListener("click",function(e){
+anchor.addEventListener(
+"click",
+function(e){
 
 
-        const target =
-        document.querySelector(
-            this.getAttribute("href")
-        );
-
-
-        if(target){
-
-            e.preventDefault();
-
-
-            target.scrollIntoView({
-
-                behavior:"smooth",
-
-                block:"start"
-
-            });
-
-        }
-
-
-    });
-
-
-});
-
-
-
-
-
-/* =====================================================
-   LAZY LOAD EMBEDS
-===================================================== */
-
-
-document.querySelectorAll("iframe")
-.forEach(frame=>{
-
-    frame.setAttribute(
-        "loading",
-        "lazy"
+    const target =
+    document.querySelector(
+        this.getAttribute("href")
     );
 
+
+    if(target){
+
+        e.preventDefault();
+
+
+        target.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"start"
+
+        });
+
+
+    }
+
+
+});
+
+
 });
 
 
 
 
 
+
 /* =====================================================
-   SCROLL ANIMATION
+   SCROLL REVEAL ANIMATION
+   Matches CSS .hidden / .show
 ===================================================== */
 
 
 const observer =
-new IntersectionObserver((entries)=>{
+new IntersectionObserver(
+
+(entries)=>{
 
 
-    entries.forEach(entry=>{
+entries.forEach(entry=>{
 
 
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-
-        }
+    if(entry.isIntersecting){
 
 
-    });
+        entry.target.classList.add("show");
 
 
-},{
+        observer.unobserve(
+            entry.target
+        );
 
-    threshold:.15
+
+    }
+
 
 });
+
+
+},
+
+{
+
+threshold:.15
+
+}
+
+);
 
 
 
 const animatedElements =
 document.querySelectorAll(
 
-    ".hero-container, " +
-    ".section, " +
-    ".album-card, " +
-    ".spotify-card, " +
-    ".video-wrapper, " +
-    ".merch-card, " +
-    ".booking-form, " +
-    ".social"
+`
+.hero-container,
+.section-header,
+.release-card,
+.album-card,
+.spotify-card,
+.video-wrapper,
+.merch-card,
+.bio-content,
+.fanclub-content,
+.booking-form,
+.social
+`
 
 );
 
@@ -222,43 +251,298 @@ document.querySelectorAll(
 
 animatedElements.forEach(element=>{
 
+
     element.classList.add("hidden");
+
 
     observer.observe(element);
 
+
 });
+
+
 
 
 
 
 
 /* =====================================================
-   MERCH MOBILE IMAGE SWITCH
+   WELCOME EMAIL POPUP
 ===================================================== */
 
 
-const merchCards =
-document.querySelectorAll(".merch-card");
+const welcomePopup =
+document.getElementById(
+"welcomePopup"
+);
 
 
-merchCards.forEach(card=>{
+const closeWelcome =
+document.getElementById(
+"closeWelcome"
+);
 
 
-    card.addEventListener("touchstart",()=>{
+const emailOfferForm =
+document.getElementById(
+"emailOfferForm"
+);
 
 
-        card.classList.toggle("active");
+const discountCode =
+document.getElementById(
+"discountCode"
+);
 
 
-    });
+
+
+function openWelcomePopup(){
+
+
+    if(welcomePopup){
+
+        welcomePopup.classList.add(
+            "active"
+        );
+
+
+        document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+}
+
+
+
+function closeWelcomePopup(){
+
+
+    if(welcomePopup){
+
+        welcomePopup.classList.remove(
+            "active"
+        );
+
+
+        document.body.style.overflow =
+        "";
+
+    }
+
+
+}
+
+
+
+
+/* Show once per visitor */
+
+
+if(
+    welcomePopup &&
+    !localStorage.getItem(
+        "ksaWelcomeShown"
+    )
+){
+
+
+    setTimeout(()=>{
+
+
+        openWelcomePopup();
+
+
+    },1500);
+
+
+
+}
+
+
+
+
+if(closeWelcome){
+
+
+closeWelcome.addEventListener(
+"click",
+()=>{
+
+
+    closeWelcomePopup();
 
 
 });
 
 
+}
 
 
 
+
+/* Close popup clicking outside */
+
+
+if(welcomePopup){
+
+
+welcomePopup.addEventListener(
+"click",
+(e)=>{
+
+
+    if(
+        e.target === welcomePopup
+    ){
+
+        closeWelcomePopup();
+
+    }
+
+
+});
+
+
+}
+
+
+
+
+
+/* Email discount submit */
+
+
+if(emailOfferForm){
+
+
+emailOfferForm.addEventListener(
+"submit",
+async(e)=>{
+
+
+e.preventDefault();
+
+
+
+const email =
+document.getElementById(
+"customerEmail"
+).value;
+
+
+
+try{
+
+
+const response =
+await fetch(
+"/.netlify/functions/signup",
+{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":
+"application/json"
+
+},
+
+body:JSON.stringify({
+
+email:email,
+
+source:"discount"
+
+})
+
+}
+
+);
+
+
+
+const result =
+await response.json();
+
+
+
+if(result.success || response.ok){
+
+
+
+localStorage.setItem(
+
+"ksaWelcomeShown",
+
+"true"
+
+);
+
+
+
+if(discountCode){
+
+discountCode.innerHTML =
+`
+Your discount code:<br>
+<strong>KSA10</strong>
+`;
+
+}
+
+
+
+setTimeout(()=>{
+
+
+closeWelcomePopup();
+
+
+},3000);
+
+
+
+}else{
+
+
+throw new Error();
+
+}
+
+
+
+}catch(error){
+
+
+
+if(discountCode){
+
+discountCode.textContent =
+"Unable to generate discount. Try again.";
+
+}
+
+
+
+console.error(
+"Popup signup error:",
+error
+);
+
+
+
+}
+
+
+
+});
+
+
+}
 /* =====================================================
    FAN CLUB MODAL
 ===================================================== */
@@ -280,164 +564,258 @@ const fanForm =
 document.getElementById("fanForm");
 
 
+const fanMessage =
+document.getElementById("fanMessage");
 
 
-if(fanButton && fanModal){
 
 
-    fanButton.addEventListener("click",()=>{
+function openFanModal(){
 
-        fanModal.classList.add("active");
 
-    });
+    if(fanModal){
 
-
-}
-
-
-
-if(closeFanModal){
-
-
-    closeFanModal.addEventListener("click",()=>{
-
-
-        fanModal.classList.remove("active");
-
-
-    });
-
-
-}
-
-
-
-if(fanModal){
-
-
-    fanModal.addEventListener("click",(e)=>{
-
-
-        if(e.target === fanModal){
-
-            fanModal.classList.remove("active");
-
-        }
-
-
-    });
-
-
-}
-
-
-
-
-if(fanForm){
-
-fanForm.addEventListener("submit", async (e)=>{
-
-    e.preventDefault();
-
-
-    const formData =
-    new FormData(fanForm);
-
-
-const data = {
-
-    name: formData.get("name"),
-
-    email: formData.get("email"),
-
-    source:"fanclub"
-
-};
-
-
-
-    const fanMessage =
-    document.getElementById("fanMessage");
-
-
-
-    try{
-
-
-        const response =
-        await fetch(
-        "/.netlify/functions/signup",
-        {
-
-            method:"POST",
-
-            headers:{
-
-                "Content-Type":
-                "application/json"
-
-            },
-
-            body:
-            JSON.stringify(data)
-
-        });
-
-
-
-        const result =
-        await response.json();
-
-
-
-        if(result.success){
-
-
-            fanMessage.textContent =
-            "Welcome to The JIGGY SHI* ONLY CLUB!";
-
-
-            fanForm.reset();
-
-
-
-            setTimeout(()=>{
-
-                fanModal.classList.remove("active");
-
-            },2000);
-
-
-
-        }else{
-
-
-            throw new Error();
-
-        }
-
-
-
-    }catch(error){
-
-
-        fanMessage.textContent =
-        "Signup failed. Please try again.";
-
-
-        console.error(
-        "Fan signup error:",
-        error
+        fanModal.classList.add(
+            "active"
         );
 
 
+        document.body.style.overflow =
+        "hidden";
+
     }
+
+
+}
+
+
+
+
+function closeFanClubModal(){
+
+
+    if(fanModal){
+
+        fanModal.classList.remove(
+            "active"
+        );
+
+
+        document.body.style.overflow =
+        "";
+
+    }
+
+
+}
+
+
+
+if(fanButton){
+
+
+fanButton.addEventListener(
+"click",
+()=>{
+
+
+    openFanModal();
 
 
 });
 
 
 }
+
+
+
+
+if(closeFanModal){
+
+
+closeFanModal.addEventListener(
+"click",
+()=>{
+
+
+    closeFanClubModal();
+
+
+});
+
+
+}
+
+
+
+
+if(fanModal){
+
+
+fanModal.addEventListener(
+"click",
+(e)=>{
+
+
+if(
+    e.target === fanModal
+){
+
+
+    closeFanClubModal();
+
+
+}
+
+
+});
+
+
+}
+
+
+
+
+
+/* FAN CLUB SIGNUP */
+
+
+if(fanForm){
+
+
+fanForm.addEventListener(
+"submit",
+async(e)=>{
+
+
+e.preventDefault();
+
+
+
+const formData =
+new FormData(
+fanForm
+);
+
+
+
+const data = {
+
+
+name:
+formData.get("name"),
+
+
+email:
+formData.get("email"),
+
+
+source:
+"fanclub"
+
+
+};
+
+
+
+try{
+
+
+const response =
+await fetch(
+"/.netlify/functions/signup",
+{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify(data)
+
+}
+
+);
+
+
+
+const result =
+await response.json();
+
+
+
+if(result.success || response.ok){
+
+
+
+if(fanMessage){
+
+fanMessage.textContent =
+"Welcome to The JIGGY SHI* ONLY CLUB!";
+
+}
+
+
+
+fanForm.reset();
+
+
+
+setTimeout(()=>{
+
+
+closeFanClubModal();
+
+
+},2500);
+
+
+
+}else{
+
+
+throw new Error();
+
+
+}
+
+
+
+}catch(error){
+
+
+
+if(fanMessage){
+
+fanMessage.textContent =
+"Signup failed. Please try again.";
+
+}
+
+
+
+console.error(
+"Fan signup:",
+error
+);
+
+
+
+}
+
+
+
+});
+
+
+}
+
+
 
 
 
@@ -449,15 +827,21 @@ const data = {
 
 
 const bookingForm =
-document.getElementById("bookingForm");
+document.getElementById(
+"bookingForm"
+);
 
 
 const bookingButton =
-document.getElementById("bookingSubmit");
+document.getElementById(
+"bookingSubmit"
+);
 
 
 const bookingMessage =
-document.getElementById("bookingMessage");
+document.getElementById(
+"bookingMessage"
+);
 
 
 
@@ -465,102 +849,141 @@ document.getElementById("bookingMessage");
 if(bookingForm){
 
 
-bookingForm.addEventListener("submit",
+bookingForm.addEventListener(
+"submit",
 async(e)=>{
 
 
-    e.preventDefault();
-
-
-    if(bookingButton){
-
-        bookingButton.disabled=true;
-
-        bookingButton.classList.add("loading");
-
-    }
+e.preventDefault();
 
 
 
-    const formData =
-    new FormData(bookingForm);
+if(bookingButton){
+
+bookingButton.disabled =
+true;
+
+
+bookingButton.classList.add(
+"loading"
+);
+
+
+}
 
 
 
-    try{
-
-
-        const response =
-        await fetch("/",{
-
-            method:"POST",
-
-            headers:{
-
-                "Content-Type":
-                "application/x-www-form-urlencoded"
-
-            },
-
-            body:
-            new URLSearchParams(formData)
-            .toString()
-
-        });
+const formData =
+new FormData(
+bookingForm
+);
 
 
 
-        if(response.ok){
+try{
 
 
-            if(bookingMessage){
+const response =
+await fetch(
+"/",
+{
 
-                bookingMessage.textContent =
-                "Booking request sent successfully.";
+method:"POST",
 
-                bookingMessage.className="success";
+headers:{
 
-            }
+"Content-Type":
+"application/x-www-form-urlencoded"
 
-
-            bookingForm.reset();
-
-
-
-        }else{
+},
 
 
-            throw new Error();
+body:
+new URLSearchParams(
+formData
+).toString()
 
 
-        }
+}
 
-
-
-    }catch(error){
-
-
-        if(bookingMessage){
-
-            bookingMessage.textContent =
-            "Something went wrong. Please try again.";
-
-            bookingMessage.className="error";
-
-        }
-
-
-    }
+);
 
 
 
-    if(bookingButton){
+if(response.ok){
 
-        bookingButton.disabled=false;
 
-        bookingButton.classList.remove("loading");
 
-    }
+if(bookingMessage){
+
+bookingMessage.textContent =
+"Booking request sent successfully.";
+
+bookingMessage.className =
+"success";
+
+
+}
+
+
+
+bookingForm.reset();
+
+
+
+}else{
+
+
+throw new Error();
+
+
+}
+
+
+
+
+}catch(error){
+
+
+
+if(bookingMessage){
+
+bookingMessage.textContent =
+"Something went wrong. Please try again.";
+
+bookingMessage.className =
+"error";
+
+
+}
+
+
+
+console.error(
+"Booking error:",
+error
+);
+
+
+
+}
+
+
+
+
+if(bookingButton){
+
+
+bookingButton.disabled =
+false;
+
+
+bookingButton.classList.remove(
+"loading"
+);
+
+
+}
 
 
 
@@ -573,74 +996,95 @@ async(e)=>{
 
 
 
+
 /* =====================================================
    PAYMENT SYSTEM
 ===================================================== */
 
 
 const buyButtons =
-document.querySelectorAll(".buy-btn");
+document.querySelectorAll(
+".buy-btn"
+);
 
 
 const paymentModal =
-document.getElementById("paymentModal");
+document.getElementById(
+"paymentModal"
+);
 
 
 const closePayment =
-document.getElementById("closePayment");
+document.getElementById(
+"closePayment"
+);
 
 
 const selectedProduct =
-document.getElementById("selectedProduct");
+document.getElementById(
+"selectedProduct"
+);
+
+
+const proofProduct =
+document.getElementById(
+"proofProduct"
+);
+
 
 
 
 buyButtons.forEach(button=>{
 
 
-    button.addEventListener("click",()=>{
+button.addEventListener(
+"click",
+()=>{
 
 
-        const product =
-        button.dataset.product;
+const product =
+button.dataset.product;
 
 
-        const price =
-        button.dataset.price;
-
-
-
-        if(selectedProduct){
-
-            selectedProduct.textContent =
-            `${product} - $${price}`;
-
-        }
+const price =
+button.dataset.price;
 
 
 
-        const proofProduct =
-        document.getElementById("proofProduct");
+if(selectedProduct){
+
+selectedProduct.textContent =
+`${product} - $${price}`;
+
+}
 
 
 
-        if(proofProduct){
+if(proofProduct){
 
-            proofProduct.value =
-            `${product} - $${price}`;
+proofProduct.value =
+`${product} - $${price}`;
 
-        }
-
-
-
-        if(paymentModal){
-
-            paymentModal.classList.add("active");
-
-        }
+}
 
 
-    });
+
+if(paymentModal){
+
+paymentModal.classList.add(
+"active"
+);
+
+
+document.body.style.overflow =
+"hidden";
+
+
+}
+
+
+
+});
 
 
 });
@@ -649,13 +1093,38 @@ buyButtons.forEach(button=>{
 
 
 
+
+function closePaymentModal(){
+
+
+if(paymentModal){
+
+paymentModal.classList.remove(
+"active"
+);
+
+
+document.body.style.overflow =
+"";
+
+
+}
+
+
+}
+
+
+
+
 if(closePayment){
 
 
-closePayment.addEventListener("click",()=>{
+closePayment.addEventListener(
+"click",
+()=>{
 
 
-    paymentModal.classList.remove("active");
+closePaymentModal();
 
 
 });
@@ -670,27 +1139,28 @@ closePayment.addEventListener("click",()=>{
 if(paymentModal){
 
 
-paymentModal.addEventListener("click",(e)=>{
+paymentModal.addEventListener(
+"click",
+(e)=>{
 
 
-    if(e.target === paymentModal){
+if(
+e.target === paymentModal
+){
 
-        paymentModal.classList.remove("active");
 
-    }
+closePaymentModal();
+
+
+}
 
 
 });
 
 
 }
-
-
-
-
-
 /* =====================================================
-   ORDER NUMBER
+   ORDER NUMBER GENERATOR
 ===================================================== */
 
 
@@ -701,10 +1171,10 @@ function generateOrderNumber(){
     new Date();
 
 
-    const number =
+    const random =
     Math.floor(
         10000 +
-        Math.random()*90000
+        Math.random() * 90000
     );
 
 
@@ -715,16 +1185,16 @@ function generateOrderNumber(){
         date.getFullYear() +
 
         String(
-        date.getMonth()+1
+            date.getMonth()+1
         ).padStart(2,"0") +
 
         String(
-        date.getDate()
+            date.getDate()
         ).padStart(2,"0") +
 
         "-" +
 
-        number
+        random
 
     );
 
@@ -733,15 +1203,20 @@ function generateOrderNumber(){
 
 
 
-const orderInput =
-document.getElementById("orderNumber");
+
+const orderNumber =
+document.getElementById(
+"orderNumber"
+);
 
 
 
-if(orderInput){
+if(orderNumber){
 
-    orderInput.value =
+
+    orderNumber.value =
     generateOrderNumber();
+
 
 }
 
@@ -749,37 +1224,47 @@ if(orderInput){
 
 
 
+
 /* =====================================================
-   PAYMENT CONFIRMATION
+   PAYMENT PROOF FORM
 ===================================================== */
 
 
-const paymentForm =
-document.getElementById("paymentProofForm");
+const paymentProofForm =
+document.getElementById(
+"paymentProofForm"
+);
 
 
 const orderMessage =
-document.getElementById("orderMessage");
+document.getElementById(
+"orderMessage"
+);
 
 
 
-if(paymentForm){
+
+if(paymentProofForm){
 
 
-paymentForm.addEventListener("submit",()=>{
+paymentProofForm.addEventListener(
+"submit",
+(e)=>{
 
 
-    if(orderMessage){
+if(orderMessage){
 
 
-        orderMessage.innerHTML =
-        `
-        Thank you for your order.<br>
-        Your payment is being verified.
-        `;
+orderMessage.innerHTML =
+
+`
+Thank you for your order.<br>
+Your payment is being verified.
+`;
 
 
-    }
+}
+
 
 
 });
@@ -791,182 +1276,86 @@ paymentForm.addEventListener("submit",()=>{
 
 
 
+
+
 /* =====================================================
-   ZELLE COPY
+   ZELLE COPY FUNCTION
 ===================================================== */
 
 
 function copyZelle(){
 
-    const zelleInfo =
-    document.getElementById("zelleDetails").innerText;
+
+const zelleDetails =
+document.getElementById(
+"zelleDetails"
+);
 
 
-    navigator.clipboard.writeText(zelleInfo);
+
+if(
+    !zelleDetails
+) return;
 
 
-    alert(
-    "Zelle payment details copied!"
-    );
+
+navigator.clipboard.writeText(
+    zelleDetails.innerText
+);
+
+
+
+alert(
+"Zelle payment details copied!"
+);
+
+
 
 }
 
 
-window.copyZelle = copyZelle;
+
+window.copyZelle =
+copyZelle;
+
+
+
+
+
 
 /* =====================================================
-   WELCOME EMAIL DISCOUNT POPUP
+   CONFIRM PAYMENT BUTTON
 ===================================================== */
 
-const welcomePopup =
-document.getElementById("welcomePopup");
 
-const closeWelcome =
-document.getElementById("closeWelcome");
-
-const emailOfferForm =
-document.getElementById("emailOfferForm");
-
-const discountCode =
-document.getElementById("discountCode");
+const confirmPayment =
+document.querySelector(
+".confirm-payment"
+);
 
 
-/* Show popup only once */
 
-if (
-    welcomePopup &&
-    !localStorage.getItem("ksaEmailPopup")
-) {
+if(confirmPayment){
 
-    setTimeout(() => {
 
-        welcomePopup.classList.add("active");
+confirmPayment.addEventListener(
+"click",
+()=>{
 
-    }, 3000);
+
+if(orderMessage){
+
+
+orderMessage.innerHTML =
+
+`
+Payment confirmation received.<br>
+Your order is being processed.
+`;
+
+
 
 }
-
-
-/* Close popup */
-
-if (closeWelcome) {
-
-    closeWelcome.addEventListener("click", () => {
-
-        welcomePopup.classList.remove("active");
-
-    });
-
-}
-
-
-/* Submit email */
-
-if (emailOfferForm) {
-
-    emailOfferForm.addEventListener("submit", async (e) => {
-
-
-    e.preventDefault();
-
-    const email =
-    document.getElementById(
-    "customerEmail"
-    ).value;
-
-
-    const data = {
-
-        email: email,
-
-        source:"discount"
-
-    };
-
-
-    try{
-
-
-        const response =
-        await fetch(
-        "/.netlify/functions/signup",
-        {
-
-            method:"POST",
-
-            headers:{
-
-                "Content-Type":
-                "application/json"
-
-            },
-
-            body:
-            JSON.stringify(data)
-
-        });
-
-
-        const result =
-        await response.json();
-
-
-
-        if(result.success){
-
-
-
-            localStorage.setItem(
-
-                "ksaEmailPopup",
-
-                email
-
-            );
-
-
-
-            discountCode.innerHTML =
-
-            `
-            Your discount code:<br>
-            <strong>KSA10</strong>
-            `;
-
-
-
-        }else{
-
-
-            throw new Error();
-
-
-        }
-
-
-
-
-
-    }catch(error){
-
-
-
-        discountCode.innerHTML =
-
-        `
-        Unable to generate discount.
-        Please try again.
-        `;
-
-
-
-        console.error(
-        "Discount signup error:",
-        error
-        );
-
-
-    }
 
 
 
@@ -974,3 +1363,227 @@ if (emailOfferForm) {
 
 
 }
+
+
+
+
+
+
+
+/* =====================================================
+   MERCH TOUCH EFFECT
+   Mobile image switching
+===================================================== */
+
+
+document.querySelectorAll(
+".merch-card"
+)
+.forEach(card=>{
+
+
+card.addEventListener(
+"touchstart",
+()=>{
+
+
+card.classList.toggle(
+"active"
+);
+
+
+},
+{
+passive:true
+}
+
+);
+
+
+});
+
+
+
+
+
+
+
+/* =====================================================
+   IMAGE PERFORMANCE
+===================================================== */
+
+
+document.querySelectorAll(
+"img"
+)
+.forEach(image=>{
+
+
+if(
+    !image.hasAttribute(
+        "loading"
+    )
+){
+
+image.setAttribute(
+"loading",
+"lazy"
+);
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+/* =====================================================
+   DISABLE RIGHT CLICK ON IMAGES
+   Optional Artist Protection
+===================================================== */
+
+
+document.querySelectorAll(
+".hero-bg, .album-img"
+)
+.forEach(image=>{
+
+
+image.addEventListener(
+"contextmenu",
+(e)=>{
+
+
+e.preventDefault();
+
+
+});
+
+
+});
+
+
+
+
+
+
+/* =====================================================
+   ESC KEY CLOSE ALL MODALS
+===================================================== */
+
+
+document.addEventListener(
+"keydown",
+(e)=>{
+
+
+if(
+e.key === "Escape"
+){
+
+
+
+document
+.querySelectorAll(
+".fan-modal.active, .payment-modal.active, .welcome-popup.active"
+)
+.forEach(modal=>{
+
+
+modal.classList.remove(
+"active"
+);
+
+
+});
+
+
+
+document.body.style.overflow =
+"";
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+/* =====================================================
+   PREVENT DOUBLE FORM SUBMISSIONS
+===================================================== */
+
+
+document.querySelectorAll(
+"form"
+)
+.forEach(form=>{
+
+
+form.addEventListener(
+"submit",
+()=>{
+
+
+const button =
+form.querySelector(
+"button[type='submit']"
+);
+
+
+
+if(button){
+
+
+setTimeout(()=>{
+
+
+button.disabled =
+false;
+
+
+},3000);
+
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+/* =====================================================
+   PAGE READY LOG
+===================================================== */
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+console.log(
+"KeepSwagAlive Website Loaded - Version 3.0"
+);
+
+
+});
