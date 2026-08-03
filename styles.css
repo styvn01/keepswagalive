@@ -1509,24 +1509,31 @@ button{
 </header>
 
 /* =====================================================
-   HERO SECTION
+   HERO SECTION - RESPONSIVE VERSION
 ===================================================== */
+
+
+/* =========================
+   HERO CONTAINER
+========================= */
 
 .hero{
 
     position:relative;
 
-    min-height:100vh;
-
     width:100%;
 
-    overflow:hidden;
+    min-height:100vh;
 
     display:flex;
 
     align-items:center;
 
     justify-content:center;
+
+    overflow:hidden;
+
+    padding:120px 20px 90px;
 
     background:#000;
 
@@ -1551,9 +1558,9 @@ button{
 
     object-fit:cover;
 
-    object-position:center;
+    object-position:center center;
 
-    z-index:1;
+    z-index:0;
 
 }
 
@@ -1576,15 +1583,17 @@ button{
 
         180deg,
 
-        rgba(0,0,0,.45),
+        rgba(0,0,0,.35),
 
         rgba(0,0,0,.75)
 
     );
 
-    z-index:2;
+    z-index:1;
 
 }
+
+
 
 
 
@@ -1597,13 +1606,13 @@ button{
 
     position:relative;
 
-    z-index:3;
+    z-index:2;
 
-    width:min(900px,90%);
+    width:min(900px,100%);
+
+    margin:auto;
 
     text-align:center;
-
-    color:white;
 
     display:flex;
 
@@ -1613,50 +1622,65 @@ button{
 
     justify-content:center;
 
-    margin-top:40px;
-
 }
 
 
 
+
+
 /* =========================
-   HERO TEXT
+   HERO TAG
 ========================= */
 
 
 .hero-tag{
 
-    font-size:1rem;
+    color:#fff;
 
-    letter-spacing:5px;
+    font-size:1rem;
 
     font-weight:600;
 
-    color:#ddd;
-
-    margin-bottom:20px;
+    letter-spacing:5px;
 
     text-transform:uppercase;
+
+    margin-bottom:25px;
+
+    opacity:.9;
 
 }
 
 
 
+
+
+/* =========================
+   HERO TITLE
+========================= */
+
+
 .hero-title{
+
+    color:white;
 
     font-size:clamp(4rem,10vw,8rem);
 
     font-weight:800;
 
-    line-height:1;
+    line-height:.95;
 
-    margin:0;
+    margin:0 0 45px;
+
+    text-transform:none;
 
     text-shadow:
 
-    0 10px 30px rgba(0,0,0,.7);
+    0 10px 30px rgba(0,0,0,.6);
 
 }
+
+
 
 
 
@@ -1675,15 +1699,27 @@ button{
 
     gap:20px;
 
-    margin-top:45px; /* pushes buttons lower */
+    flex-wrap:wrap;
+
+    margin-top:10px;
 
 }
 
 
 
-/* =========================
+.hero-buttons .btn{
+
+    min-width:170px;
+
+}
+
+
+
+
+
+/* =====================================================
    TABLET
-========================= */
+===================================================== */
 
 
 @media(max-width:992px){
@@ -1693,34 +1729,31 @@ button{
 
     min-height:90vh;
 
-}
+    padding:
 
-
-
-.hero-container{
-
-    margin-top:20px;
+    130px 25px 90px;
 
 }
 
 
 
-.hero-buttons{
+.hero-title{
 
-    margin-top:40px;
-
-}
-
+    font-size:clamp(3.5rem,9vw,6rem);
 
 }
 
 
 
+}
 
 
-/* =========================
+
+
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 
 @media(max-width:768px){
@@ -1728,7 +1761,16 @@ button{
 
 .hero{
 
-    min-height:85vh;
+
+    min-height:
+
+    100svh;
+
+
+    padding:
+
+    150px 20px 90px;
+
 
 }
 
@@ -1736,7 +1778,9 @@ button{
 
 .hero-bg{
 
-    object-position:center;
+
+    object-position:center center;
+
 
 }
 
@@ -1744,9 +1788,9 @@ button{
 
 .hero-container{
 
-    width:90%;
 
-    margin-top:30px;
+    justify-content:center;
+
 
 }
 
@@ -1754,11 +1798,13 @@ button{
 
 .hero-tag{
 
-    font-size:.85rem;
+
+    font-size:.8rem;
 
     letter-spacing:3px;
 
-    margin-bottom:15px;
+    margin-bottom:20px;
+
 
 }
 
@@ -1766,7 +1812,13 @@ button{
 
 .hero-title{
 
-    font-size:clamp(3.5rem,18vw,5rem);
+
+    font-size:4rem;
+
+    line-height:1;
+
+    margin-bottom:50px;
+
 
 }
 
@@ -1774,13 +1826,13 @@ button{
 
 .hero-buttons{
 
+
     flex-direction:column;
 
     width:100%;
 
-    gap:15px;
+    gap:18px;
 
-    margin-top:50px; /* extra spacing on phones */
 
 }
 
@@ -1788,22 +1840,25 @@ button{
 
 .hero-buttons .btn{
 
+
     width:100%;
 
-    max-width:280px;
-
-}
+    max-width:300px;
 
 
 }
 
 
 
+}
 
 
-/* =========================
+
+
+
+/* =====================================================
    SMALL PHONES
-========================= */
+===================================================== */
 
 
 @media(max-width:430px){
@@ -1811,23 +1866,11 @@ button{
 
 .hero{
 
-    min-height:80vh;
 
-}
+    padding:
 
+    160px 15px 80px;
 
-
-.hero-container{
-
-    margin-top:20px;
-
-}
-
-
-
-.hero-buttons{
-
-    margin-top:55px;
 
 }
 
@@ -1835,9 +1878,24 @@ button{
 
 .hero-title{
 
-    font-size:3.2rem;
+
+    font-size:3.3rem;
+
+    margin-bottom:45px;
+
 
 }
+
+
+
+.hero-tag{
+
+
+    font-size:.7rem;
+
+
+}
+
 
 
 }
