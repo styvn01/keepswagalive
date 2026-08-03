@@ -2093,14 +2093,15 @@ button{
 }
 
 /* =====================================================
-   MEDIA SECTION
+   MEDIA SECTION - 3 COLUMN RESPONSIVE VERSION
 ===================================================== */
+
 
 .media-section{
 
-    padding:90px 20px;
-
     background:#090909;
+
+    padding:90px 5%;
 
 }
 
@@ -2108,15 +2109,17 @@ button{
 
 .media-container{
 
-    width:min(1200px, 100%);
+    width:min(1400px,100%);
 
     margin:auto;
 
     display:grid;
 
-    grid-template-columns:520px 1fr;
+    grid-template-columns:
 
-    gap:40px;
+    repeat(3,1fr);
+
+    gap:30px;
 
     align-items:stretch;
 
@@ -2124,25 +2127,24 @@ button{
 
 
 
-
-
-/* ================= ALBUM ================= */
+/* =====================================================
+   ALBUM ART
+===================================================== */
 
 
 .album-card{
 
-    width:100%;
-
-    aspect-ratio:1 / 1;
-
-    overflow:hidden;
+    background:#111;
 
     border-radius:24px;
 
-    background:#111;
+    overflow:hidden;
 
     box-shadow:
+
     0 25px 60px rgba(0,0,0,.45);
+
+    height:100%;
 
 }
 
@@ -2154,26 +2156,11 @@ button{
 
     height:100%;
 
-    display:block;
+    min-height:500px;
 
     object-fit:cover;
 
-}
-
-
-
-
-
-/* ================= MEDIA COLUMN ================= */
-
-
-.media-column{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:30px;
+    display:block;
 
 }
 
@@ -2181,21 +2168,24 @@ button{
 
 
 
-/* ================= SPOTIFY ================= */
+/* =====================================================
+   SPOTIFY CARD
+===================================================== */
 
 
 .spotify-card{
 
-    height:180px;
+    background:#111;
+
+    border-radius:24px;
 
     overflow:hidden;
 
-    border-radius:22px;
-
-    background:#111;
-
     box-shadow:
-    0 20px 50px rgba(0,0,0,.35);
+
+    0 25px 60px rgba(0,0,0,.45);
+
+    height:100%;
 
 }
 
@@ -2207,6 +2197,8 @@ button{
 
     height:100%;
 
+    min-height:500px;
+
     border:0;
 
 }
@@ -2215,21 +2207,24 @@ button{
 
 
 
-/* ================= VIDEO ================= */
+/* =====================================================
+   VIDEO CARD
+===================================================== */
 
 
 .video-wrapper{
 
-    height:290px;
+    background:#111;
+
+    border-radius:24px;
 
     overflow:hidden;
 
-    border-radius:22px;
-
-    background:#111;
-
     box-shadow:
-    0 20px 50px rgba(0,0,0,.35);
+
+    0 25px 60px rgba(0,0,0,.45);
+
+    height:100%;
 
 }
 
@@ -2237,13 +2232,17 @@ button{
 
 .video-wrapper iframe{
 
+
     width:100%;
 
     height:100%;
 
+    min-height:500px;
+
     border:0;
 
     display:block;
+
 
 }
 
@@ -2251,7 +2250,10 @@ button{
 
 
 
-/* ================= HOVER ================= */
+
+/* =====================================================
+   HOVER EFFECTS
+===================================================== */
 
 
 .album-card,
@@ -2266,31 +2268,45 @@ button{
 
 @media(hover:hover){
 
+
 .album-card:hover,
 .spotify-card:hover,
 .video-wrapper:hover{
 
-    transform:translateY(-6px);
+
+    transform:translateY(-8px);
+
+
+    box-shadow:
+
+    0 35px 70px rgba(0,0,0,.6);
+
 
 }
 
+
 }
 
 
 
 
 
-/* ================= TABLET ================= */
+
+/* =====================================================
+   TABLET
+===================================================== */
 
 
-@media(max-width:1000px){
+@media(max-width:1100px){
 
 
 .media-container{
 
-    grid-template-columns:1fr;
 
-    max-width:700px;
+    grid-template-columns:
+
+    repeat(2,1fr);
+
 
 }
 
@@ -2298,34 +2314,45 @@ button{
 
 .album-card{
 
-    aspect-ratio:1 / 1;
 
-}
-
-
-
-.spotify-card{
-
-    height:200px;
-
-}
-
-
-
-.video-wrapper{
-
-    height:380px;
-
-}
+    grid-column:span 2;
 
 
 }
 
 
 
+.album-img{
 
 
-/* ================= MOBILE ================= */
+    min-height:450px;
+
+
+}
+
+
+
+.spotify-embed,
+.video-wrapper iframe{
+
+
+    min-height:400px;
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 
 @media(max-width:768px){
@@ -2333,7 +2360,9 @@ button{
 
 .media-section{
 
-    padding:60px 18px;
+
+    padding:60px 20px;
+
 
 }
 
@@ -2341,9 +2370,9 @@ button{
 
 .media-container{
 
-    width:100%;
 
-    gap:25px;
+    grid-template-columns:1fr;
+
 
 }
 
@@ -2351,44 +2380,23 @@ button{
 
 .album-card{
 
-    width:100%;
 
-    aspect-ratio:1 / 1;
-
-}
-
-
-
-.spotify-card{
-
-    height:180px;
-
-}
-
-
-
-.video-wrapper{
-
-    height:240px;
-
-}
+    height:auto;
 
 
 }
 
 
 
+.album-img{
 
 
-/* ================= SMALL PHONES ================= */
+    height:auto;
 
+    min-height:auto;
 
-@media(max-width:430px){
+    aspect-ratio:1/1;
 
-
-.album-card{
-
-    border-radius:18px;
 
 }
 
@@ -2397,23 +2405,90 @@ button{
 .spotify-card,
 .video-wrapper{
 
+
+    height:350px;
+
+
+}
+
+
+
+.spotify-embed,
+.video-wrapper iframe{
+
+
+    min-height:350px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+
+@media(max-width:430px){
+
+
+.media-section{
+
+
+    padding:50px 15px;
+
+
+}
+
+
+
+.album-img{
+
+
     border-radius:18px;
 
-}
-
-
-
-.spotify-card{
-
-    height:160px;
 
 }
 
 
 
+.spotify-card,
+.video-wrapper,
+.album-card{
+
+
+    border-radius:18px;
+
+
+}
+
+
+
+.spotify-card,
 .video-wrapper{
 
-    height:220px;
+
+    height:300px;
+
+
+}
+
+
+
+.spotify-embed,
+.video-wrapper iframe{
+
+
+    min-height:300px;
+
 
 }
 
@@ -2430,50 +2505,107 @@ button{
 
     background:#080808;
 
-    max-width:900px;
+    padding:90px 20px;
+
+}
+
+
+
+.music-container{
+
+    width:min(1200px,100%);
 
     margin:auto;
 
-    text-align:center;
+    display:grid;
 
-    padding:80px 20px;
+    grid-template-columns:420px 1fr;
+
+    gap:45px;
+
+    align-items:center;
 
 }
+
 
 
 
 
 /* =========================
-   MUSIC PLAYER
+   ALBUM COVER
 ========================= */
+
+
+.music-cover{
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.45);
+
+}
+
+
+
+.music-cover img{
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:.4s ease;
+
+}
+
+
+
+.music-cover:hover img{
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+/* =========================
+   MUSIC CONTENT
+========================= */
+
+
+.music-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+
+
 
 
 .music-player{
 
-    margin:40px auto;
+    background:#111;
 
     padding:20px;
 
     border-radius:24px;
 
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.08),
-        rgba(255,255,255,.02)
-    );
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-
     box-shadow:
-
-    0 25px 60px rgba(0,0,0,.4);
+    0 20px 50px rgba(0,0,0,.35);
 
 }
-
 
 
 
@@ -2485,8 +2617,6 @@ button{
 
     border:0;
 
-    border-radius:15px;
-
 }
 
 
@@ -2494,25 +2624,17 @@ button{
 
 
 /* =========================
-   RELEASE INFORMATION
+   RELEASE INFO
 ========================= */
-
-
-.release-info{
-
-    margin-top:35px;
-
-}
-
 
 
 .release-info h3{
 
+    color:white;
+
     font-size:2rem;
 
     margin-bottom:15px;
-
-    color:white;
 
 }
 
@@ -2524,11 +2646,15 @@ button{
 
     line-height:1.8;
 
-    max-width:700px;
+    margin-bottom:25px;
 
-    margin:
+}
 
-    0 auto 30px;
+
+
+.platform-buttons{
+
+    display:flex;
 
 }
 
@@ -2537,25 +2663,31 @@ button{
 
 
 /* =========================
-   BUTTONS
+   TABLET
 ========================= */
 
 
-.platform-buttons{
+@media(max-width:1000px){
 
-    display:flex;
 
-    justify-content:center;
+.music-container{
 
-    gap:15px;
+    grid-template-columns:1fr;
+
+    max-width:700px;
 
 }
 
 
 
-.platform-buttons .btn{
+.music-cover{
 
-    min-width:170px;
+    max-width:500px;
+
+    margin:auto;
+
+}
+
 
 }
 
@@ -2573,7 +2705,15 @@ button{
 
 .music-section{
 
-    padding:60px 20px;
+    padding:60px 18px;
+
+}
+
+
+
+.music-container{
+
+    gap:30px;
 
 }
 
@@ -2602,26 +2742,15 @@ button{
 }
 
 
-
-.platform-buttons{
-
-    flex-direction:column;
-
 }
 
 
 
-.platform-buttons .btn{
-
-    width:100%;
-
-}
 
 
-}
-
-
-
+/* =========================
+   SMALL PHONES
+========================= */
 
 
 @media(max-width:430px){
@@ -2634,15 +2763,11 @@ button{
 }
 
 
-
-.release-info h3{
-
-    font-size:1.4rem;
-
+}
 }
 
 
-}
+
 /* =====================================================
    VERSION 4.0
    MERCH STORE SECTION
