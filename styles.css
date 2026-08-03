@@ -1509,91 +1509,49 @@ button{
 </header>
 
 /* =====================================================
-   VERSION 4.0
    HERO SECTION
 ===================================================== */
-
 
 .hero{
 
     position:relative;
 
-
-    min-height:100svh;
-
+    min-height:100vh;
 
     width:100%;
 
+    overflow:hidden;
 
     display:flex;
 
-
     align-items:center;
-
 
     justify-content:center;
 
-
-    overflow:hidden;
-
-
-    isolation:isolate;
-
-
-    padding:100px 20px 60px;
+    background:#000;
 
 }
 
 
 
-/* =====================================================
+/* =========================
    HERO IMAGE
-===================================================== */
+========================= */
 
 
 .hero-bg{
 
-
     position:absolute;
-
 
     inset:0;
 
-
-
     width:100%;
-
 
     height:100%;
 
-
-
     object-fit:cover;
 
-
-
     object-position:center;
-
-
-
-    filter:
-
-
-    brightness(.55)
-    contrast(1.15)
-    saturate(1.15);
-
-
-
-    transform:scale(1.04);
-
-
-
-    animation:
-
-    heroZoom 12s ease-in-out infinite alternate;
-
-
 
     z-index:1;
 
@@ -1601,70 +1559,28 @@ button{
 
 
 
-
-@keyframes heroZoom{
-
-
-    from{
-
-        transform:scale(1.04);
-
-    }
-
-
-    to{
-
-        transform:scale(1.12);
-
-    }
-
-
-}
-
-
-
-
-
-/* =====================================================
-   HERO DARK OVERLAY
-===================================================== */
+/* =========================
+   HERO OVERLAY
+========================= */
 
 
 .hero-overlay{
 
-
     position:absolute;
-
 
     inset:0;
 
-
-
     background:
-
-
-    radial-gradient(
-
-        circle at center,
-
-        rgba(230,183,92,.12),
-
-        transparent 35%
-
-    ),
-
 
     linear-gradient(
 
         180deg,
 
-        rgba(0,0,0,.25),
+        rgba(0,0,0,.45),
 
-        rgba(0,0,0,.85)
+        rgba(0,0,0,.75)
 
     );
-
-
 
     z-index:2;
 
@@ -1672,284 +1588,128 @@ button{
 
 
 
-
-
-/* =====================================================
+/* =========================
    HERO CONTENT
-===================================================== */
+========================= */
 
 
 .hero-container{
 
-
     position:relative;
-
 
     z-index:3;
 
-
-
-    width:min(1200px,92%);
-
-
-
-    margin:auto;
-
-
+    width:min(900px,90%);
 
     text-align:center;
 
-
-
     color:white;
 
+    display:flex;
 
+    flex-direction:column;
 
-    animation:
+    align-items:center;
 
-    heroFade 1s ease forwards;
+    justify-content:center;
 
-
-
-}
-
-
-
-
-@keyframes heroFade{
-
-
-    from{
-
-
-        opacity:0;
-
-
-        transform:translateY(40px);
-
-
-    }
-
-
-
-    to{
-
-
-        opacity:1;
-
-
-        transform:translateY(0);
-
-
-    }
-
+    margin-top:40px;
 
 }
 
 
 
-
-
-/* =====================================================
-   HERO TAG
-===================================================== */
+/* =========================
+   HERO TEXT
+========================= */
 
 
 .hero-tag{
 
-
-    display:inline-block;
-
-
-
-    color:var(--gold);
-
-
-
     font-size:1rem;
-
-
 
     letter-spacing:5px;
 
+    font-weight:600;
 
-
-    text-transform:uppercase;
-
-
-
-    font-weight:700;
-
-
+    color:#ddd;
 
     margin-bottom:20px;
 
-}
-
-
-
-.hero-tag::after{
-
-
-    content:"";
-
-
-    display:block;
-
-
-    width:70px;
-
-
-    height:2px;
-
-
-    background:var(--gold);
-
-
-    margin:12px auto 0;
+    text-transform:uppercase;
 
 }
 
-
-
-
-
-/* =====================================================
-   HERO TITLE
-===================================================== */
 
 
 .hero-title{
 
-
-    font-size:
-
-
-    clamp(4rem,12vw,8rem);
-
-
-
-    line-height:1;
-
-
+    font-size:clamp(4rem,10vw,8rem);
 
     font-weight:800;
 
+    line-height:1;
 
+    margin:0;
 
-    margin-bottom:35px;
+    text-shadow:
 
-
-
-    letter-spacing:-2px;
-
-
-
-    background:
-
-
-    linear-gradient(
-
-        90deg,
-
-        #ffffff,
-
-        var(--gold)
-
-    );
-
-
-
-    -webkit-background-clip:text;
-
-
-
-    -webkit-text-fill-color:transparent;
+    0 10px 30px rgba(0,0,0,.7);
 
 }
 
 
 
-
-
-/* =====================================================
+/* =========================
    HERO BUTTONS
-===================================================== */
+========================= */
 
 
 .hero-buttons{
 
-
     display:flex;
-
 
     justify-content:center;
 
-
     align-items:center;
-
-
-
-    flex-wrap:wrap;
-
-
 
     gap:20px;
 
-
-
-}
-
-
-
-
-
-.hero-buttons .btn{
-
-
-    min-width:180px;
+    margin-top:45px; /* pushes buttons lower */
 
 }
 
 
 
-
-
-/* =====================================================
+/* =========================
    TABLET
-===================================================== */
+========================= */
 
 
-@media(max-width:900px){
+@media(max-width:992px){
 
 
 .hero{
 
-
-    min-height:95svh;
-
-}
-
-
-
-.hero-title{
-
-
-    font-size:
-
-    clamp(3.5rem,12vw,6rem);
+    min-height:90vh;
 
 }
 
 
 
-.hero-tag{
+.hero-container{
 
-
-    letter-spacing:4px;
+    margin-top:20px;
 
 }
 
+
+
+.hero-buttons{
+
+    margin-top:40px;
+
+}
 
 
 }
@@ -1958,11 +1718,9 @@ button{
 
 
 
-
-
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 
 @media(max-width:768px){
@@ -1970,12 +1728,7 @@ button{
 
 .hero{
 
-
-    padding:
-
-    100px 20px 50px;
-
-
+    min-height:85vh;
 
 }
 
@@ -1983,22 +1736,17 @@ button{
 
 .hero-bg{
 
-
-    object-position:center top;
-
+    object-position:center;
 
 }
 
 
 
-.hero-title{
+.hero-container{
 
+    width:90%;
 
-    font-size:
-
-    clamp(3rem,15vw,4.5rem);
-
-
+    margin-top:30px;
 
 }
 
@@ -2006,13 +1754,19 @@ button{
 
 .hero-tag{
 
-
     font-size:.85rem;
-
-
 
     letter-spacing:3px;
 
+    margin-bottom:15px;
+
+}
+
+
+
+.hero-title{
+
+    font-size:clamp(3.5rem,18vw,5rem);
 
 }
 
@@ -2020,13 +1774,13 @@ button{
 
 .hero-buttons{
 
-
     flex-direction:column;
-
 
     width:100%;
 
+    gap:15px;
 
+    margin-top:50px; /* extra spacing on phones */
 
 }
 
@@ -2034,66 +1788,63 @@ button{
 
 .hero-buttons .btn{
 
+    width:100%;
 
-    width:
+    max-width:280px;
 
-    min(320px,100%);
-
+}
 
 
 }
 
 
 
-}
 
 
-
-
-
-/* =====================================================
+/* =========================
    SMALL PHONES
-===================================================== */
+========================= */
 
 
 @media(max-width:430px){
 
 
+.hero{
+
+    min-height:80vh;
+
+}
+
+
+
+.hero-container{
+
+    margin-top:20px;
+
+}
+
+
+
+.hero-buttons{
+
+    margin-top:55px;
+
+}
+
+
+
 .hero-title{
 
-
-    font-size:2.8rem;
-
-
-}
-
-
-
-.hero-tag{
-
-
-    letter-spacing:2px;
-
-
-}
-
-
-
-.hero-buttons .btn{
-
-
-    padding:
-
-    13px 20px;
-
+    font-size:3.2rem;
 
 }
 
 
 }
+
 
 /* =====================================================
-   MEDIA SECTION - 3 COLUMN RESPONSIVE VERSION
+   MEDIA SECTION - FINAL BALANCED VERSION
 ===================================================== */
 
 
@@ -2103,13 +1854,22 @@ button{
 
     padding:90px 5%;
 
+    overflow:hidden;
+
 }
 
 
 
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+
 .media-container{
 
-    width:min(1400px,100%);
+    width:min(1300px,100%);
+
+    max-width:100%;
 
     margin:auto;
 
@@ -2117,13 +1877,19 @@ button{
 
     grid-template-columns:
 
-    repeat(3,1fr);
+    minmax(0,1fr)
 
-    gap:30px;
+    minmax(0,1fr);
+
+    gap:35px;
 
     align-items:stretch;
 
+    box-sizing:border-box;
+
 }
+
+
 
 
 
@@ -2133,6 +1899,12 @@ button{
 
 
 .album-card{
+
+    width:100%;
+
+    max-width:100%;
+
+    aspect-ratio:1 / 1;
 
     background:#111;
 
@@ -2144,7 +1916,7 @@ button{
 
     0 25px 60px rgba(0,0,0,.45);
 
-    height:100%;
+    box-sizing:border-box;
 
 }
 
@@ -2156,11 +1928,13 @@ button{
 
     height:100%;
 
-    min-height:500px;
+    max-width:100%;
+
+    display:block;
 
     object-fit:cover;
 
-    display:block;
+    object-position:center;
 
 }
 
@@ -2169,11 +1943,42 @@ button{
 
 
 /* =====================================================
-   SPOTIFY CARD
+   MEDIA COLUMN
+===================================================== */
+
+
+.media-column{
+
+    width:100%;
+
+    max-width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+    min-width:0;
+
+}
+
+
+
+
+
+/* =====================================================
+   SPOTIFY PLAYER
 ===================================================== */
 
 
 .spotify-card{
+
+    width:100%;
+
+    height:180px;
+
+    max-width:100%;
 
     background:#111;
 
@@ -2184,8 +1989,6 @@ button{
     box-shadow:
 
     0 25px 60px rgba(0,0,0,.45);
-
-    height:100%;
 
 }
 
@@ -2197,9 +2000,9 @@ button{
 
     height:100%;
 
-    min-height:500px;
-
     border:0;
+
+    display:block;
 
 }
 
@@ -2208,11 +2011,19 @@ button{
 
 
 /* =====================================================
-   VIDEO CARD
+   VIDEO PLAYER
 ===================================================== */
 
 
 .video-wrapper{
+
+    width:100%;
+
+    max-width:100%;
+
+    flex:1;
+
+    min-height:300px;
 
     background:#111;
 
@@ -2224,25 +2035,21 @@ button{
 
     0 25px 60px rgba(0,0,0,.45);
 
-    height:100%;
-
 }
 
 
 
 .video-wrapper iframe{
 
-
     width:100%;
 
     height:100%;
 
-    min-height:500px;
+    min-height:300px;
 
     border:0;
 
     display:block;
-
 
 }
 
@@ -2250,9 +2057,8 @@ button{
 
 
 
-
 /* =====================================================
-   HOVER EFFECTS
+   HOVER EFFECT
 ===================================================== */
 
 
@@ -2260,7 +2066,11 @@ button{
 .spotify-card,
 .video-wrapper{
 
-    transition:.35s ease;
+    transition:
+
+    transform .35s ease,
+
+    box-shadow .35s ease;
 
 }
 
@@ -2274,19 +2084,17 @@ button{
 .video-wrapper:hover{
 
 
-    transform:translateY(-8px);
+    transform:translateY(-6px);
 
 
     box-shadow:
 
-    0 35px 70px rgba(0,0,0,.6);
+    0 35px 70px rgba(0,0,0,.55);
 
 
 }
 
-
 }
-
 
 
 
@@ -2297,15 +2105,13 @@ button{
 ===================================================== */
 
 
-@media(max-width:1100px){
+@media(max-width:1000px){
 
 
 .media-container{
 
 
-    grid-template-columns:
-
-    repeat(2,1fr);
+    grid-template-columns:1fr;
 
 
 }
@@ -2315,36 +2121,35 @@ button{
 .album-card{
 
 
-    grid-column:span 2;
+    width:min(600px,100%);
+
+    margin:auto;
 
 
 }
 
 
 
-.album-img{
+.spotify-card{
 
 
-    min-height:450px;
-
-
-}
-
-
-
-.spotify-embed,
-.video-wrapper iframe{
-
-
-    min-height:400px;
+    height:180px;
 
 
 }
 
 
+
+.video-wrapper{
+
+
+    min-height:350px;
+
+
 }
 
 
+}
 
 
 
@@ -2371,7 +2176,7 @@ button{
 .media-container{
 
 
-    grid-template-columns:1fr;
+    width:100%;
 
 
 }
@@ -2381,52 +2186,33 @@ button{
 .album-card{
 
 
-    height:auto;
+    aspect-ratio:1 / 1;
 
 
 }
 
 
 
-.album-img{
+.spotify-card{
 
 
-    height:auto;
-
-    min-height:auto;
-
-    aspect-ratio:1/1;
+    height:160px;
 
 
 }
 
 
 
-.spotify-card,
 .video-wrapper{
 
 
-    height:350px;
+    min-height:240px;
 
 
 }
 
 
-
-.spotify-embed,
-.video-wrapper iframe{
-
-
-    min-height:350px;
-
-
 }
-
-
-
-}
-
-
 
 
 
@@ -2450,48 +2236,62 @@ button{
 
 
 
-.album-img{
-
-
-    border-radius:18px;
-
-
-}
-
-
-
-.spotify-card,
-.video-wrapper,
-.album-card{
-
-
-    border-radius:18px;
-
-
-}
-
-
-
+.album-card,
 .spotify-card,
 .video-wrapper{
 
 
-    height:300px;
+    border-radius:18px;
 
 
 }
 
 
 
+.spotify-card{
+
+
+    height:150px;
+
+
+}
+
+
+
+.video-wrapper{
+
+
+    min-height:210px;
+
+
+}
+
+
+}
+
+
+
+
+
+/* =====================================================
+   FINAL OVERFLOW PROTECTION
+===================================================== */
+
+
+.media-section,
+.media-container,
+.album-card,
+.album-img,
+.media-column,
+.spotify-card,
 .spotify-embed,
+.video-wrapper,
 .video-wrapper iframe{
 
 
-    min-height:300px;
+    max-width:100%;
 
-
-}
-
+    box-sizing:border-box;
 
 }
 
