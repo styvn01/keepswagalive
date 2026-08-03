@@ -1508,14 +1508,12 @@ button{
 
 </header>
 
+
+
 /* =====================================================
-   HERO SECTION - RESPONSIVE VERSION
+   HERO SECTION - FINAL RESPONSIVE VERSION
 ===================================================== */
 
-
-/* =========================
-   HERO CONTAINER
-========================= */
 
 .hero{
 
@@ -1523,7 +1521,7 @@ button{
 
     width:100%;
 
-    min-height:100vh;
+    min-height:100svh;
 
     display:flex;
 
@@ -1533,9 +1531,11 @@ button{
 
     overflow:hidden;
 
+    background:#000;
+
     padding:120px 20px 90px;
 
-    background:#000;
+    isolation:isolate;
 
 }
 
@@ -1560,14 +1560,14 @@ button{
 
     object-position:center center;
 
-    z-index:0;
+    z-index:-2;
 
 }
 
 
 
 /* =========================
-   HERO OVERLAY
+   DARK OVERLAY
 ========================= */
 
 
@@ -1585,11 +1585,11 @@ button{
 
         rgba(0,0,0,.35),
 
-        rgba(0,0,0,.75)
+        rgba(0,0,0,.85)
 
     );
 
-    z-index:1;
+    z-index:-1;
 
 }
 
@@ -1603,10 +1603,6 @@ button{
 
 
 .hero-container{
-
-    position:relative;
-
-    z-index:2;
 
     width:min(900px,100%);
 
@@ -1628,14 +1624,9 @@ button{
 
 
 
-/* =========================
-   HERO TAG
-========================= */
-
-
 .hero-tag{
 
-    color:#fff;
+    color:white;
 
     font-size:1rem;
 
@@ -1643,21 +1634,13 @@ button{
 
     letter-spacing:5px;
 
-    text-transform:uppercase;
-
     margin-bottom:25px;
 
-    opacity:.9;
+    text-transform:uppercase;
 
 }
 
 
-
-
-
-/* =========================
-   HERO TITLE
-========================= */
 
 
 .hero-title{
@@ -1670,13 +1653,11 @@ button{
 
     line-height:.95;
 
-    margin:0 0 45px;
-
-    text-transform:none;
+    margin:0 0 55px;
 
     text-shadow:
 
-    0 10px 30px rgba(0,0,0,.6);
+    0 10px 35px rgba(0,0,0,.7);
 
 }
 
@@ -1685,7 +1666,7 @@ button{
 
 
 /* =========================
-   HERO BUTTONS
+   BUTTONS
 ========================= */
 
 
@@ -1700,8 +1681,6 @@ button{
     gap:20px;
 
     flex-wrap:wrap;
-
-    margin-top:10px;
 
 }
 
@@ -1718,41 +1697,7 @@ button{
 
 
 /* =====================================================
-   TABLET
-===================================================== */
-
-
-@media(max-width:992px){
-
-
-.hero{
-
-    min-height:90vh;
-
-    padding:
-
-    130px 25px 90px;
-
-}
-
-
-
-.hero-title{
-
-    font-size:clamp(3.5rem,9vw,6rem);
-
-}
-
-
-
-}
-
-
-
-
-
-/* =====================================================
-   MOBILE
+   HERO MOBILE
 ===================================================== */
 
 
@@ -1761,16 +1706,11 @@ button{
 
 .hero{
 
-
-    min-height:
-
-    100svh;
-
+    min-height:100svh;
 
     padding:
 
-    150px 20px 90px;
-
+    120px 20px 80px;
 
 }
 
@@ -1778,19 +1718,7 @@ button{
 
 .hero-bg{
 
-
-    object-position:center center;
-
-
-}
-
-
-
-.hero-container{
-
-
-    justify-content:center;
-
+    object-position:center;
 
 }
 
@@ -1798,13 +1726,9 @@ button{
 
 .hero-tag{
 
-
-    font-size:.8rem;
+    font-size:.75rem;
 
     letter-spacing:3px;
-
-    margin-bottom:20px;
-
 
 }
 
@@ -1812,13 +1736,9 @@ button{
 
 .hero-title{
 
+    font-size:3.8rem;
 
-    font-size:4rem;
-
-    line-height:1;
-
-    margin-bottom:50px;
-
+    margin-bottom:45px;
 
 }
 
@@ -1826,13 +1746,11 @@ button{
 
 .hero-buttons{
 
-
     flex-direction:column;
 
     width:100%;
 
     gap:18px;
-
 
 }
 
@@ -1840,25 +1758,17 @@ button{
 
 .hero-buttons .btn{
 
-
     width:100%;
 
     max-width:300px;
 
+}
+
 
 }
 
 
 
-}
-
-
-
-
-
-/* =====================================================
-   SMALL PHONES
-===================================================== */
 
 
 @media(max-width:430px){
@@ -1866,11 +1776,9 @@ button{
 
 .hero{
 
-
     padding:
 
-    160px 15px 80px;
-
+    130px 15px 70px;
 
 }
 
@@ -1878,27 +1786,17 @@ button{
 
 .hero-title{
 
+    font-size:3.2rem;
 
-    font-size:3.3rem;
+    margin-bottom:40px;
 
-    margin-bottom:45px;
+}
 
 
 }
 
 
 
-.hero-tag{
-
-
-    font-size:.7rem;
-
-
-}
-
-
-
-}
 
 
 /* =====================================================
@@ -1908,9 +1806,15 @@ button{
 
 .media-section{
 
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
     background:#090909;
 
-    padding:90px 5%;
+    padding:90px 20px;
 
     overflow:hidden;
 
@@ -1918,16 +1822,12 @@ button{
 
 
 
-/* =====================================================
-   MAIN CONTAINER
-===================================================== */
 
 
 .media-container{
 
-    width:min(1300px,100%);
 
-    max-width:100%;
+    width:min(1300px,100%);
 
     margin:auto;
 
@@ -1935,15 +1835,11 @@ button{
 
     grid-template-columns:
 
-    minmax(0,1fr)
-
-    minmax(0,1fr);
+    1fr 1fr;
 
     gap:35px;
 
-    align-items:stretch;
-
-    box-sizing:border-box;
+    align-items:center;
 
 }
 
@@ -1951,32 +1847,30 @@ button{
 
 
 
-/* =====================================================
+/* =========================
    ALBUM ART
-===================================================== */
+========================= */
 
 
 .album-card{
 
     width:100%;
 
-    max-width:100%;
-
     aspect-ratio:1 / 1;
 
-    background:#111;
+    overflow:hidden;
 
     border-radius:24px;
 
-    overflow:hidden;
+    background:#111;
 
     box-shadow:
 
     0 25px 60px rgba(0,0,0,.45);
 
-    box-sizing:border-box;
-
 }
+
+
 
 
 
@@ -1986,13 +1880,9 @@ button{
 
     height:100%;
 
-    max-width:100%;
-
-    display:block;
-
     object-fit:cover;
 
-    object-position:center;
+    display:block;
 
 }
 
@@ -2000,16 +1890,12 @@ button{
 
 
 
-/* =====================================================
-   MEDIA COLUMN
-===================================================== */
+/* =========================
+   RIGHT SIDE MEDIA
+========================= */
 
 
 .media-column{
-
-    width:100%;
-
-    max-width:100%;
 
     display:flex;
 
@@ -2017,7 +1903,7 @@ button{
 
     gap:30px;
 
-    min-width:0;
+    width:100%;
 
 }
 
@@ -2025,9 +1911,9 @@ button{
 
 
 
-/* =====================================================
-   SPOTIFY PLAYER
-===================================================== */
+/* =========================
+   SPOTIFY
+========================= */
 
 
 .spotify-card{
@@ -2036,13 +1922,11 @@ button{
 
     height:180px;
 
-    max-width:100%;
-
-    background:#111;
-
     border-radius:24px;
 
     overflow:hidden;
+
+    background:#111;
 
     box-shadow:
 
@@ -2060,34 +1944,28 @@ button{
 
     border:0;
 
-    display:block;
-
 }
 
 
 
 
 
-/* =====================================================
-   VIDEO PLAYER
-===================================================== */
+/* =========================
+   VIDEO
+========================= */
 
 
 .video-wrapper{
 
     width:100%;
 
-    max-width:100%;
+    aspect-ratio:16 / 9;
 
-    flex:1;
-
-    min-height:300px;
-
-    background:#111;
+    overflow:hidden;
 
     border-radius:24px;
 
-    overflow:hidden;
+    background:#111;
 
     box-shadow:
 
@@ -2103,11 +1981,7 @@ button{
 
     height:100%;
 
-    min-height:300px;
-
     border:0;
-
-    display:block;
 
 }
 
@@ -2115,20 +1989,16 @@ button{
 
 
 
-/* =====================================================
-   HOVER EFFECT
-===================================================== */
+/* =========================
+   HOVER
+========================= */
 
 
 .album-card,
 .spotify-card,
 .video-wrapper{
 
-    transition:
-
-    transform .35s ease,
-
-    box-shadow .35s ease;
+    transition:.35s ease;
 
 }
 
@@ -2145,12 +2015,8 @@ button{
     transform:translateY(-6px);
 
 
-    box-shadow:
-
-    0 35px 70px rgba(0,0,0,.55);
-
-
 }
+
 
 }
 
@@ -2168,9 +2034,9 @@ button{
 
 .media-container{
 
-
     grid-template-columns:1fr;
 
+    max-width:700px;
 
 }
 
@@ -2178,11 +2044,7 @@ button{
 
 .album-card{
 
-
-    width:min(600px,100%);
-
-    margin:auto;
-
+    width:100%;
 
 }
 
@@ -2190,9 +2052,7 @@ button{
 
 .spotify-card{
 
-
     height:180px;
-
 
 }
 
@@ -2200,9 +2060,7 @@ button{
 
 .video-wrapper{
 
-
-    min-height:350px;
-
+    aspect-ratio:16/9;
 
 }
 
@@ -2223,19 +2081,7 @@ button{
 
 .media-section{
 
-
-    padding:60px 20px;
-
-
-}
-
-
-
-.media-container{
-
-
-    width:100%;
-
+    padding:60px 18px;
 
 }
 
@@ -2243,9 +2089,7 @@ button{
 
 .album-card{
 
-
-    aspect-ratio:1 / 1;
-
+    aspect-ratio:1/1;
 
 }
 
@@ -2253,9 +2097,7 @@ button{
 
 .spotify-card{
 
-
     height:160px;
-
 
 }
 
@@ -2263,9 +2105,7 @@ button{
 
 .video-wrapper{
 
-
-    min-height:240px;
-
+    aspect-ratio:16/9;
 
 }
 
@@ -2274,11 +2114,6 @@ button{
 
 
 
-
-
-/* =====================================================
-   SMALL PHONES
-===================================================== */
 
 
 @media(max-width:430px){
@@ -2286,9 +2121,7 @@ button{
 
 .media-section{
 
-
     padding:50px 15px;
-
 
 }
 
@@ -2298,9 +2131,7 @@ button{
 .spotify-card,
 .video-wrapper{
 
-
     border-radius:18px;
-
 
 }
 
@@ -2308,50 +2139,13 @@ button{
 
 .spotify-card{
 
-
     height:150px;
 
-
-}
-
-
-
-.video-wrapper{
-
-
-    min-height:210px;
-
-
 }
 
 
 }
 
-
-
-
-
-/* =====================================================
-   FINAL OVERFLOW PROTECTION
-===================================================== */
-
-
-.media-section,
-.media-container,
-.album-card,
-.album-img,
-.media-column,
-.spotify-card,
-.spotify-embed,
-.video-wrapper,
-.video-wrapper iframe{
-
-
-    max-width:100%;
-
-    box-sizing:border-box;
-
-}
 
 
 /* =====================================================
