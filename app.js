@@ -338,26 +338,48 @@ function closeWelcomePopup(){
 
 
 
-/* Show once per visitor */
+/* Show for new visitors, then again after 7 days */
 
+const WELCOME_COOLDOWN =
+    7 * 24 * 60 * 60 * 1000;
+
+const WELCOME_STORAGE_KEY =
+    "ksaWelcomeLastShown";
+
+function welcomePopupIsDue(){
+
+    const lastShown =
+        Number(
+            localStorage.getItem(
+                WELCOME_STORAGE_KEY
+            ) || "0"
+        );
+
+    return (
+        !lastShown ||
+        Date.now() - lastShown >= WELCOME_COOLDOWN
+    );
+}
+
+function rememberWelcomePopupShown(){
+
+    localStorage.setItem(
+        WELCOME_STORAGE_KEY,
+        String(Date.now())
+    );
+}
 
 if(
     welcomePopup &&
-    !localStorage.getItem(
-        "ksaWelcomeShown"
-    )
+    welcomePopupIsDue()
 ){
-
 
     setTimeout(()=>{
 
-
+        rememberWelcomePopupShown();
         openWelcomePopup();
 
-
     },1500);
-
-
 
 }
 
@@ -469,13 +491,7 @@ if(true){
 
 
 
-localStorage.setItem(
-
-"ksaWelcomeShown",
-
-"true"
-
-);
+rememberWelcomePopupShown();
 
 
 
