@@ -412,6 +412,27 @@ welcomePopup.addEventListener(
 
 
 
+/* =====================================================
+   FIREBASE DATABASE HELPERS
+===================================================== */
+
+const ksaFirebase = window.KSA_FIREBASE || null;
+const ksaDb = ksaFirebase ? ksaFirebase.db : null;
+const ksaStorage = ksaFirebase ? ksaFirebase.storage : null;
+
+async function saveKsaDocument(collection, data){
+    if(!ksaDb) throw new Error("Firebase database is not initialized.");
+    return ksaDb.collection(collection).add({
+        ...data,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        site: "keepswagalive.com"
+    });
+}
+
+function cleanValue(value){
+    return typeof value === "string" ? value.trim() : value;
+}
+
 /* Email discount submit */
 
 
@@ -437,40 +458,14 @@ document.getElementById(
 try{
 
 
-const response =
-await fetch(
-"/.netlify/functions/signup",
-{
+await saveKsaDocument("fanMembers", {
+    name: "",
+    email: cleanValue(email),
+    source: "discount",
+    type: "discount_signup"
+});
 
-method:"POST",
-
-headers:{
-
-"Content-Type":
-"application/json"
-
-},
-
-body:JSON.stringify({
-
-email:email,
-
-source:"discount"
-
-})
-
-}
-
-);
-
-
-
-const result =
-await response.json();
-
-
-
-if(result.success || response.ok){
+if(true){
 
 
 
@@ -721,35 +716,14 @@ source:
 try{
 
 
-const response =
-await fetch(
-"/.netlify/functions/signup",
-{
+await saveKsaDocument("fanMembers", {
+    name: cleanValue(data.name),
+    email: cleanValue(data.email),
+    source: data.source,
+    type: "fan_club"
+});
 
-method:"POST",
-
-headers:{
-
-"Content-Type":
-"application/json"
-
-},
-
-body:
-JSON.stringify(data)
-
-}
-
-);
-
-
-
-const result =
-await response.json();
-
-
-
-if(result.success || response.ok){
+if(true){
 
 
 
@@ -883,35 +857,16 @@ bookingForm
 try{
 
 
-const response =
-await fetch(
-"/",
-{
+await saveKsaDocument("bookings", {
+    name: cleanValue(formData.get("name")),
+    email: cleanValue(formData.get("email")),
+    event: cleanValue(formData.get("event")),
+    location: cleanValue(formData.get("location")),
+    message: cleanValue(formData.get("message")),
+    status: "new"
+});
 
-method:"POST",
-
-headers:{
-
-"Content-Type":
-"application/x-www-form-urlencoded"
-
-},
-
-
-body:
-new URLSearchParams(
-formData
-).toString()
-
-
-}
-
-);
-
-
-
-if(response.ok){
-
+if(true){
 
 
 if(bookingMessage){
@@ -926,9 +881,7 @@ bookingMessage.className =
 }
 
 
-
 bookingForm.reset();
-
 
 
 }else{
@@ -1246,34 +1199,67 @@ document.getElementById(
 
 if(paymentProofForm){
 
-
 paymentProofForm.addEventListener(
 "submit",
-(e)=>{
+async(e)=>{
 
+e.preventDefault();
 
 if(orderMessage){
-
-
-orderMessage.innerHTML =
-
-`
-Thank you for your order.<br>
-Your payment is being verified.
-`;
-
-
+    orderMessage.innerHTML = "Uploading your payment proof...";
 }
 
+try{
+    if(!ksaDb || !ksaStorage){
+        throw new Error("Firebase is not initialized.");
+    }
 
+    const fd = new FormData(paymentProofForm);
+    const file = fd.get("receipt");
+    const orderNumber = cleanValue(fd.get("order-number")) || `KSA-${Date.now()}`;
+    const customerName = cleanValue(fd.get("customer-name"));
+    const customerEmail = cleanValue(fd.get("customer-email"));
+    const product = cleanValue(fd.get("product"));
+    const paymentMethod = cleanValue(fd.get("payment-method"));
+
+    let receiptUrl = "";
+    let receiptPath = "";
+
+    if(file && file.size){
+        if(file.size > 10 * 1024 * 1024){
+            throw new Error("Receipt image must be 10MB or smaller.");
+        }
+        const safeName = String(file.name || "receipt").replace(/[^a-zA-Z0-9._-]/g, "_");
+        receiptPath = `payment-receipts/${orderNumber}-${Date.now()}-${safeName}`;
+        const upload = await ksaStorage.ref(receiptPath).put(file, {contentType: file.type || "image/jpeg"});
+        receiptUrl = await upload.ref.getDownloadURL();
+    }
+
+    await saveKsaDocument("payments", {
+        orderNumber,
+        customerName,
+        customerEmail,
+        product,
+        paymentMethod,
+        receiptUrl,
+        receiptPath,
+        status: "pending_verification"
+    });
+
+    if(orderMessage){
+        orderMessage.innerHTML = `Thank you for your order.<br>Your payment proof has been securely submitted and is being verified.`;
+    }
+    paymentProofForm.reset();
+}catch(error){
+    console.error("Payment proof Firebase error:", error);
+    if(orderMessage){
+        orderMessage.innerHTML = `Payment proof could not be submitted.<br>${error.message || "Please try again."}`;
+    }
+}
 
 });
 
-
 }
-
-
-
 
 
 
